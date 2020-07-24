@@ -3,7 +3,7 @@
 
 
 <h1 align="center">OWallet - a comprehensive Ontology desktop wallet</h1>
-<h4 align="center">Version 0.9.24</h4>
+<h4 align="center">Version 0.9.25</h4>
 
 ## Introduction
 
@@ -37,22 +37,20 @@ git clone https://github.com/ontio/OWallet.git
 2. Install packages
 **yarn** is recommended.
 ```
-yarn install
+yarn
 ```
 
 3. Run in Development
 
 ```
-yarn run serve
+yarn serve
 ```
 
 4. Build
 
 ```
-yarn run build
+yarn build
 ```
-
-> Do not use "npm run package" here, or the app will have problem in windows.
 
 ## Install released app
 

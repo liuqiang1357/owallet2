@@ -30,21 +30,21 @@
     },
     methods: {
       setSavePath() {
-        dialog.showOpenDialog({properties: ['openDirectory', 'createDirectory']}, (filePath) => {
-          if (filePath === undefined) {
+        dialog.showOpenDialog({properties: ['openDirectory', 'createDirectory']}).then(({filePaths}) => {
+          if (filePaths === undefined) {
             alert('You did not set the path')
             return;
           }
-          if (filePath === undefined) {
+          if (filePaths === undefined) {
             // alert('You did not set the path')
             this.$message.warning(this.$t('setting.notSetPath'))
             return;
           }
-          if (!validateKeystorePath(filePath[0])) {
+          if (!validateKeystorePath(filePaths[0])) {
             this.$message.warning(this.$t('setting.notInstallationPath'))
             return;
           }
-          localStorage.setItem('savePath', filePath)
+          localStorage.setItem('savePath', filePaths)
           localStorage.setItem('isSavePath', 'true')
           window.location.reload();//reset dbService
           $("#setPathModal").modal("hide")

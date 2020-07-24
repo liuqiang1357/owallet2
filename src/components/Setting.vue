@@ -95,20 +95,20 @@
         LangStorage.setLang(this.$i18n.locale)
       },
       setSavePath() {
-        dialog.showOpenDialog({properties: ['openDirectory','createDirectory']}, (filePath) => {
-          if (filePath === undefined) {
+        dialog.showOpenDialog({properties: ['openDirectory','createDirectory']}).then(({filePaths}) => {
+          if (filePaths === undefined) {
             // alert('You did not set the path')
             this.$message.warning(this.$t('setting.notSetPath'))
             return;
           }
-          if (!validateKeystorePath(filePath[0])) {
+          if (!validateKeystorePath(filePaths[0])) {
             this.$message.warning(this.$t('setting.notInstallationPath'))
             return;
           }
-          localStorage.setItem('savePath', filePath[0])
+          localStorage.setItem('savePath', filePaths[0])
           localStorage.setItem('isSavePath', 'true')
           window.location.reload();
-          this.savePath = filePath[0]
+          this.savePath = filePaths[0]
         })
       }
     },

@@ -3,7 +3,7 @@
 
 
 <h1 align="center">OWallet - 本体综合性桌面版钱包 </h1>
-<h4 align="center">Version 0.9.23</h4>
+<h4 align="center">Version 0.9.25</h4>
 
 ## 总体介绍
 
@@ -38,22 +38,20 @@ git clone https://github.com/ontio/OWallet.git
 推荐使用**yarn**
 
 ```
-yarn install
+yarn
 ```
 
 3. 开发模式运行
 
 ```
-yarn run serve
+yarn serve
 ```
 
 4. 打包
 
 ```
-yarn run build
+yarn build
 ```
-
-> 不要使用“npm run package”，否则windows下app会有问题。
 
 ## 安装发布的客户端
 

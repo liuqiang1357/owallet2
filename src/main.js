@@ -99,9 +99,8 @@ Vue.prototype.$info = Modal.info
 
 /* eslint-disable no-new */
 new Vue({
-  components: { App },
   router,
   store,
   i18n,
-  template: '<App/>'
+  render: h => h(App)
 }).$mount('#app')
