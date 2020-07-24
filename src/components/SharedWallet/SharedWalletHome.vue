@@ -134,12 +134,12 @@
 .pending-tx-container::-webkit-scrollbar-thumb {
   /*滚动条里面小方块*/
   border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.2);
 }
 .pending-tx-container::-webkit-scrollbar-track {
   /*滚动条里面轨道*/
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   border-radius: 0;
   background: rgba(0, 0, 0, 0.1);
 }

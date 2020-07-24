@@ -83,7 +83,7 @@ export function convertNumber2Str(num, decimal = 0, division) {
 }
 
 export function convertStr2Number(str, decimal = 0) {
-    const val = new BigNumber(num).times(Math.pow(10, decimal))
+    const val = new BigNumber(str).times(Math.pow(10, decimal))
     return val.toNumber();
 }
 

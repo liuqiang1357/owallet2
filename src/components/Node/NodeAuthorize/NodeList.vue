@@ -251,8 +251,8 @@ export default {
             });
         },
         handleFAQLink(e) {
-            var e = e || window.event;
-            var target = e.target || ev.srcElement;
+            e = e || window.event;
+            var target = e.target || e.srcElement;
             console.log(target)
             alert('helo')
         },

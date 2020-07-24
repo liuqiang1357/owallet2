@@ -177,7 +177,7 @@ export default {
         toEthScan() {
             const net = localStorage.getItem('net');
             let url = net === 'TEST_NET' ? PAX_API.EthScanTest : PAX_API.EthScanMain;
-            oepn(url)
+            open(url)
         },
         handleBack() {
             this.$router.push({path: '/Wallets'});

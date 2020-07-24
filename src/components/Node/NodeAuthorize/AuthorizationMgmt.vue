@@ -247,12 +247,6 @@ export default {
             peer_attrs: state => state.NodeAuthorization.peer_attrs,
             unboundOng: state => state.NodeAuthorization.peerUnboundOng
         }),
-        inAuthorization: {
-            get() {
-
-            }
-        }
-
     },
     methods: {
         refresh(){

@@ -323,7 +323,7 @@ export default {
     margin-top: 4px;
 	span:first-child {
 		color: #000;
-    	opacity: 0.6;
+    opacity: 0.6;
 	}
 	span:last-child {
 		opacity: 1 !important;

@@ -222,9 +222,6 @@ export default {
       unboundOng: state => state.NodeAuthorization.peerUnboundOng,
       ssInfo: state => state.NodeAuthorizationSesameseed.sesameseed
     }),
-    inAuthorization: {
-      get() {}
-    }
   },
   methods: {
     refresh() {

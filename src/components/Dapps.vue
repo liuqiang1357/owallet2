@@ -136,9 +136,6 @@ export default {
         this.getImageData();
     },
     methods: {
-        findIndex(array) {
-            return array.long == value;
-        },
         handleExchangeChangelly() {
             // this.$router.push({ name: "Changelly" });
             const changellyURL =
@@ -257,7 +254,9 @@ export default {
                 } else {
                     return "";
                 }
-            } catch (err) {}
+            } catch (err) {
+              //
+            }
         },
         refresh() {
             this.$store.dispatch("showLoadingModals");

@@ -76,7 +76,6 @@
 }
 
 .circle {
-    display: inline-block;
     text-align: center;
     border-radius:50%;
     width:1.5rem;

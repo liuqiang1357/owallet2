@@ -342,7 +342,7 @@ export default {
           const txSig = new TxSignature();
           txSig.M = 1;
           txSig.pubKeys = [pk];
-          tx.payer = new Crypto.Address(this.ledgerWallet.address);;
+          tx.payer = new Crypto.Address(this.ledgerWallet.address);
           const txData = tx.serializeUnsignedData();
           legacySignWithLedger(txData).then(res => {
               // console.log('txSigned: ' + res);

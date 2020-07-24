@@ -146,9 +146,6 @@ export default {
             this.$store.dispatch('stopGetLedgerStatus')
         }
     },
-    components:{
-        draggable
-    },
     methods:{
         back(){
             this.$emit('inputPassBack')

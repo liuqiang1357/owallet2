@@ -143,7 +143,7 @@
                         <a-icon class="refresh-icon" type="reload" @click="refresh"/>
                     </div>
 
-                    <div class="oep4-item" v-for="(token,index) of oep4s" :key="index" v-if="token.net === net">
+                    <div class="oep4-item" v-for="(token,index) of oep4s.filter(token.net === net)" :key="index">
                         <div class="font-medium-black">{{token.symbol}} - {{token.name}}</div>
                         <div class="oep4-balance">
                             <span class="asset-label">{{$t('commonWalletHome.balance')}}: </span>
@@ -174,7 +174,7 @@
                         <span>{{$t('sharedWalletHome.completedTx')}}</span>
                         <span class="transfer-icon"></span>
                     </div>
-                    <div v-for="(tx,index) in completedTx" :key="tx.txHash+index" class="tx-item" v-if="index<10"
+                    <div v-for="(tx,index) in completedTx.slice(0,10)" :key="tx.txHash+index" class="tx-item"
                         @click="showTxDetail(tx.txHash)">
                         <span>{{tx.txHash}}</span>
                         <span>{{tx.amount}} {{tx.asset}}</span>
@@ -301,7 +301,7 @@ export default {
             if (this.net === 'TEST_NET') {
                 url += '/testnet'
             }
-            openUrl(url)
+            open(url)
         },
         checkMoreTx() {
         let url = `https://explorer.ont.io/address/${this.address}/10/1`

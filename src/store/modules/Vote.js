@@ -180,6 +180,8 @@ const handleSignTx = async function (tx, wallet, password, walletType = 'commonW
         txSig.M = 1;
         txSig.pubKeys = [pk];
         const txData = tx.serializeUnsignedData();
+        // TODO
+        // eslint-disable-next-line no-undef
         const res = await legacySignWithLedger(txData)
         // console.log('txSigned: ' + res);
         const sign = '01' + res; //ECDSAwithSHA256
@@ -458,6 +460,8 @@ const actions = {
             new Parameter('', ParameterType.Array, voters) //TODO format voters to arrays
         ]
         let tx = TransactionBuilder.makeWasmVmInvokeTransaction('setVoterForTopic', params, contract, gasPrice, gasLimit, addr)
+        // TODO
+        // eslint-disable-next-line no-undef
         tx = await handleSignTx(tx, state.voteWallet, password, state.voteWalletType);
         if (!tx) {
             return;
