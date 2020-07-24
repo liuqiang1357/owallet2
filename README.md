@@ -1,4 +1,4 @@
-# owallet3
+# owallet2
 
 ## Project setup
 ```

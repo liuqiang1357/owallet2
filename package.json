@@ -1,12 +1,17 @@
 {
-  "name": "owallet3",
+  "name": "owallet2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vue-cli-service electron:serve",
+    "build": "vue-cli-service electron:build -mlw --x64",
+    "build:mac": "vue-cli-service electron:build -m --x64",
+    "build:linux": "vue-cli-service electron:build -l --x64",
+    "build:win": "vue-cli-service electron:build -w --x64",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
+  "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
@@ -20,10 +25,13 @@
     "@vue/cli-plugin-vuex": "^4.4.0",
     "@vue/cli-service": "^4.4.0",
     "babel-eslint": "^10.1.0",
+    "electron": "^9.0.0",
+    "electron-devtools-installer": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-electron-builder": "^2.0.0-rc.4",
     "vue-template-compiler": "^2.6.11"
   }
 }
