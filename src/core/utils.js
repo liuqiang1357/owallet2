@@ -6,7 +6,7 @@ import {
   TEST_NET_LIST
 } from './consts'
 import axios from 'axios'
-import store from '../renderer/store'
+import store from '../store'
 import {message} from 'ant-design-vue'
 import i18n from './lang'
 import {

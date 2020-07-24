@@ -41,20 +41,20 @@
   /* CSS */
   @font-face {
     font-family: SourceSansPro;
-    src: url('../../static/fonts/SourceSansPro-Semibold.ttf');
+    src: url('./assets/fonts/SourceSansPro-Semibold.ttf');
   }
 
   @font-face {
     font-family: AvenirNext-Bold;
-    src: url('../../static/fonts/AvenirNextBold.ttf');
+    src: url('./assets/fonts/AvenirNextBold.ttf');
   }
   @font-face {
     font-family: AvenirNext-Medium;
-    src: url('../../static/fonts/AvenirNextMedium.ttf');
+    src: url('./assets/fonts/AvenirNextMedium.ttf');
   }
   @font-face {
     font-family: AvenirNext-Regular;
-    src: url('../../static/fonts/avenirnextregular.otf');
+    src: url('./assets/fonts/avenirnextregular.otf');
   }
 
   body {
@@ -63,7 +63,7 @@
     }
   }
 
-  
+
 
   .loading {
     text-align: center;
@@ -395,11 +395,11 @@
     width:100%;
     cursor: pointer;
   }
- 
+
   .tx-item:hover span {
     color:#196BD8 !important;
   }
-  
+
   .tx-item :first-child {
     flex: 0.6;
     overflow: hidden;
