@@ -30,22 +30,22 @@
 </style>
 <template>
     <div>
-        <a-modal 
+        <a-modal
             :title="$t('common.selectOep4')"
             :visible="visible"
             @cancel="handleClose"
             :footer="null"
             :width="400">
-           
+
                 <div>
                     <div class="selection-container">
                         <div v-for="item of oep4s" :key="item.contract_hash" class="selection-item">
-                            <p>{{item.symbol}}</p> 
+                            <p>{{item.symbol}}</p>
                             <!-- <a-checkbox :checked="item.selected" @change="onChangeSelection(item)"></a-checkbox> -->
                             <a-switch :checked="item.selected" @change='onChangeSelection(item)'/>
                         </div>
                     </div>
-                    
+
                     <a-pagination v-model="page_number" :total="total"  @change="handlePageChange" class="pages"/>
                 </div>
 
@@ -53,7 +53,7 @@
     </div>
 </template>
 <script>
-/* 
+/*
 从后台获取oep4列表，本地缓存用户选择的记录，对比合约hash，显示选择状态，要有分页；
 每次更新选择，触发mutation更新store并更新缓存；
 */
@@ -77,7 +77,7 @@ export default {
         ...mapState({
 
         })
-       
+
     },
     watch: {
         visible: function(newVal) {

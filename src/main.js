@@ -15,9 +15,9 @@ import VueClipboard from 'vue-clipboard2'
 VueClipboard.config.autoSetContainer = true // add this line
 Vue.use(VueClipboard)
 
-import i18n from '../common/lang'
+import i18n from './lang'
 import VeeValidate from 'vee-validate'
-import { VALIDATE_DICTIONARY } from '../core/consts'
+import { VALIDATE_DICTIONARY } from './core/consts'
 import validationMessages_en from 'vee-validate/dist/locale/en';
 import validationMessages_zh from 'vee-validate/dist/locale/zh_CN';
 
@@ -27,11 +27,11 @@ Vue.use(VeeValidate, {
       en: Object.assign({},validationMessages_en, VALIDATE_DICTIONARY.en),
       zh: Object.assign({},validationMessages_zh, VALIDATE_DICTIONARY.zh)
   }
-})  
-import service from '../core/utils'
+})
+import service from './core/utils'
 Vue.prototype.httpService = service;
 
-import { VOTE_ROLE } from '../core/consts'
+import { VOTE_ROLE } from './core/consts'
 const mixin = {
     data () {
         return {

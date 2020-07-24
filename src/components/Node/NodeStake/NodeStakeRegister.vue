@@ -70,9 +70,9 @@
                 <p class="font-medium"><a-icon type="info-circle-o" /> {{$t('nodeStake.feeTip')}}</p>
                 <a-button type="primary" class="btn-next" @click="handleStake">{{$t('nodeStake.stake')}}</a-button>
             </div>
-            
+
         </div>
-        <a-modal 
+        <a-modal
         :title="$t('nodeStake.signWithOntid')"
         :visible="ontidPassModal"
         @ok="handleOntidSignOK"
@@ -83,7 +83,7 @@
           </div>
         </a-modal>
 
-        <a-modal 
+        <a-modal
         :title="$t('nodeStake.signWithWallet')"
         :visible="walletPassModal"
         @ok="handleWalletSignOK"
@@ -104,10 +104,10 @@
 <script>
 import Breadcrumb from "../../Breadcrumb";
 import { mapState } from "vuex";
-import { GAS_PRICE, GAS_LIMIT, TEST_NET, MAIN_NET, ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, DEFAULT_SCRYPT } from "../../../../core/consts";
+import { GAS_PRICE, GAS_LIMIT, TEST_NET, MAIN_NET, ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, DEFAULT_SCRYPT } from "../../../core/consts";
 import { Crypto, TransactionBuilder, RestClient, utils, GovernanceTxBuilder, TxSignature } from "ontology-ts-sdk";
 import axios from 'axios'
-import {legacySignWithLedger} from '../../../../core/ontLedger'
+import {legacySignWithLedger} from '../../../core/ontLedger'
 
 export default {
   name: "NodeStakeRegister",
@@ -249,7 +249,7 @@ export default {
                 this.walletModalHandled = false;
                 this.$store.dispatch('hideLoadingModals')
                 alert(err.message)
-            }) 
+            })
         } else {
             this.$message.warning(this.$t('ledgerWallet.connectApp'))
         }

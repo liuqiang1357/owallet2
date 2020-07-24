@@ -1,4 +1,4 @@
-import dbService, { dbFind } from '../../../core/dbService';
+import dbService, { dbFind } from '../../core/dbService';
 
 const state = {
     Identities: []
@@ -21,7 +21,7 @@ const actions = {
         try {
             const IdentityDocs = await dbFind(dbService, { type: 'Identity' });
             const identities = IdentityDocs.map(item => item.wallet)
-            
+
             commit('FETCH_IDENTITIES', { identities });
         } catch (err) {
             alert(err)

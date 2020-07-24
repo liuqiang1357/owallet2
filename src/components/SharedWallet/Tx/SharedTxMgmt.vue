@@ -9,18 +9,18 @@
         <breadcrumb :routes="routes" :current="$t('sharedWalletHome.txMgmt')" @backEvent="handleBack"></breadcrumb>
         <div class="pax-container">
             <div class="pax-header">
-                
+
                 <a-radio-group :value="status" @change="handleStatusChange" class="status-group">
                     <a-radio-button value="0">{{$t('sharedTx.startTx')}}</a-radio-button>
                     <a-radio-button value="1">{{$t('sharedTx.signTx')}}</a-radio-button>
                 </a-radio-group>
-                
+
             </div>
             <div class="tx-content">
                 <start-shared-tx v-if="status === '0'" :localSigners="localCopayers" :sharedWallet="sharedWallet"></start-shared-tx>
                 <sign-shared-tx v-if="status === '1'" :localSigners="localCopayers" :sharedWallet="sharedWallet"></sign-shared-tx>
             </div>
-        </div>            
+        </div>
     </div>
 </template>
 
@@ -28,7 +28,7 @@
 import Breadcrumb from '../../Breadcrumb'
 import StartSharedTx from './StartSharedTx'
 import SignSharedTx from './SignSharedTx'
-import dbService from '../../../../core/dbService'
+import dbService from '../../../core/dbService'
 
 export default {
     name: 'SharedTxMgmt',

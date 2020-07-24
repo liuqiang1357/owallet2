@@ -30,9 +30,9 @@
 <script>
   import {mapState} from 'vuex'
   import {Wallet, Account, Crypto} from "ontology-ts-sdk"
-  import dbService from '../../../../core/dbService'
-  import {WALLET_TYPE}  from '../../../../core/consts'
-  import {getDeviceInfo, getPublicKey} from '../../../../core/ontLedger'
+  import dbService from '../../../core/dbService'
+  import {WALLET_TYPE}  from '../../../core/consts'
+  import {getDeviceInfo, getPublicKey} from '../../../core/ontLedger'
 
   export default {
     name: 'BasicInfo',
@@ -122,7 +122,7 @@
           }
           if(accounts && accounts.length > 0) {
             dbService.update(
-              {address: account.address}, 
+              {address: account.address},
               {$set: {wallet: account}}, {},
               (err, replaceDoc) => {
                 if(err) {
@@ -139,8 +139,8 @@
             })
           }
         })
-        
-        
+
+
         sessionStorage.setItem('currentWallet', JSON.stringify(account))
         that.$router.push({name: 'Dashboard'})
       },

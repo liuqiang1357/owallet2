@@ -1,11 +1,11 @@
 import {Oep4, RestClient, Crypto, utils} from 'ontology-ts-sdk'
-import {TEST_NET, MAIN_NET} from '../../../core/consts'
+import {TEST_NET, MAIN_NET} from '../../core/consts'
 import { BigNumber } from 'bignumber.js';
 import axios from 'axios';
 import {
   getRestClient,
   getTokenListUrl
-} from '../../../core/utils'
+} from '../../core/utils'
 
 
 // Deprecated
@@ -154,7 +154,7 @@ const actions = {
                 balance: temp[index]
             }))
             commit('UPDATE_OEP4S', {oep4s: newOep4s})
-            dispatch('hideLoadingModals');            
+            dispatch('hideLoadingModals');
         } catch(err) {
             dispatch('hideLoadingModals');
             console.log(err);
@@ -175,7 +175,7 @@ const actions = {
                     for (const tx of t.TransferList) {
                         if(tx.AssetName === 'ong'){
                             continue;
-                        } 
+                        }
                         for(let o of oep4s) {
                             let amount = tx.Amount
                             if(o.symbol === tx.AssetName || tx.AssetName === 'LCY') { // They give the wrong symbol for token LUCKY
@@ -192,7 +192,7 @@ const actions = {
                                 break;
                             }
                         }
-                        
+
                     }
 
                 }

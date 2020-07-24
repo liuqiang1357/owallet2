@@ -1,8 +1,8 @@
 import axios from 'axios'
-import en from '../../../common/lang/en'
-import zh from '../../../common/lang/zh'
-import { ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, QUERY_NODE_INFO_API, 
-    UPDATE_NODE_INFO_API, UPDATE_LEDGER_NODE_INFO_API } from '../../../core/consts'
+import en from '../../lang/en'
+import zh from '../../lang/zh'
+import { ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, QUERY_NODE_INFO_API,
+    UPDATE_NODE_INFO_API, UPDATE_LEDGER_NODE_INFO_API } from '../../core/consts'
 
 const state = {
     detail: {
@@ -33,18 +33,18 @@ const mutations = {
     UPDATE_STAKE_WALLET(state, payload) {
         state.stakeWallet = payload.stakeWallet
     },
-    UPDATE_NODE_PUBLICKEY(state, payload) { 
+    UPDATE_NODE_PUBLICKEY(state, payload) {
         state.nodePublicKey = payload.nodePublicKey
     },
-    UPDATE_NODE_STATUS(state, payload) { 
+    UPDATE_NODE_STATUS(state, payload) {
         state.status = payload.status
     },
     UPDATE_STAKE_STATUS(state, payload) {
         state.status1 = payload.status1
         state.status2 = payload.status2
-        state.status3 = payload.status3 
+        state.status3 = payload.status3
         state.current = payload.current
-        state.statusTip = payload.statusTip     
+        state.statusTip = payload.statusTip
     },
     UPDATE_STAKE_DETAIL(state, payload) {
         state.detail = payload.detail
@@ -86,7 +86,7 @@ function getStatus(status) {
              status2 = formatStatusText('auditing')
              status3 = formatStatusText('stake')
              statusTip = formatStatusText('auditNeedTime')
-             current = 1            
+             current = 1
             break;
         case 3: // 没了
              status1 = formatStatusText('transfered')
@@ -102,7 +102,7 @@ function getStatus(status) {
              statusTip = formatStatusText('unfrozenToRefund')
              current = 0
             break;
-        case 5: 
+        case 5:
              status1 = formatStatusText('nodeExited')
              status2 = formatStatusText('refunding')
              status3 = formatStatusText('quitStake')

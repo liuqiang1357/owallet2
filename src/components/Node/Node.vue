@@ -104,11 +104,11 @@
             </div>
         </div>
     </div>
-    
+
 </template>
 
 <script>
-import {open} from '../../../core/utils'
+import {open} from '../../core/utils'
 export default {
     name: 'NodeManagement',
     data(){

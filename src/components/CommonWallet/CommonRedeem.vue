@@ -49,19 +49,19 @@
                     </a-button>
             </div>
         </div>
-        
+
     </div>
 </template>
 
 <script>
 import Breadcrumb from '../Breadcrumb'
-import {legacySignWithLedger} from '../../../core/ontLedger'
+import {legacySignWithLedger} from '../../core/ontLedger'
 import {RestClient, Crypto,OntAssetTxBuilder, TransactionBuilder, utils, TxSignature} from 'ontology-ts-sdk'
-import { TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE, DEFAULT_SCRYPT, GAS_PRICE, GAS_LIMIT } from '../../../core/consts'
+import { TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE, DEFAULT_SCRYPT, GAS_PRICE, GAS_LIMIT } from '../../core/consts'
 import {mapState} from 'vuex'
-import {getDeviceInfo, getPublicKey} from '../../../core/ontLedger'
+import {getDeviceInfo, getPublicKey} from '../../core/ontLedger'
 import {BigNumber} from 'bignumber.js'
-import { getRestClient } from '../../../core/utils'
+import { getRestClient } from '../../core/utils'
 export default {
     name: 'CommonRedeem',
     components: {
@@ -219,12 +219,12 @@ export default {
                         this.ledgerStatus = '';
                         this.$store.dispatch('hideLoadingModals')
                         alert(err.message)
-                    }) 
+                    })
                 } else {
                     this.$message.warning(this.$t('ledgerWallet.connectApp'))
                 }
-                
-                
+
+
             }
         }
     }

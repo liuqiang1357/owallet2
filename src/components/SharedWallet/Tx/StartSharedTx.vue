@@ -22,7 +22,7 @@
 }
 .label {
     width:200px;
-    margin-right:10px;         
+    margin-right:10px;
 }
 .select-sponsor {
     flex:1;
@@ -39,15 +39,15 @@
              <div class="input-item">
                  <p class="label">{{$t('sharedTx.contractHash')}}</p>
                  <a-input v-model="contractHash"></a-input>
-            </div>   
+            </div>
             <div class="input-item">
                  <p class="label">{{$t('sharedTx.method')}}</p>
                  <a-input v-model="method"></a-input>
-            </div>       
+            </div>
             <div class="input-item">
                  <p class="label">{{$t('sharedTx.parameters')}}</p>
                  <a-textarea row="3" v-model="parameters"></a-textarea>
-            </div>                 
+            </div>
         </div>
         <p class="tx-title">{{$t('sharedTx.starterSign')}}</p>
         <div class="tx-content">
@@ -55,20 +55,20 @@
                 <span class="label">{{$t('sharedTx.selectSponsor')}}</span>
                 <a-select :options="localSigners" class="select-sponsor"  @change="handleChangeSponsor"></a-select>
             </div>
-        
-            <common-sign-shared 
+
+            <common-sign-shared
                 ref="commonSign"
-                :tx="tx" 
-                :wallet="sponsorPayer" 
+                :tx="tx"
+                :wallet="sponsorPayer"
                 @sharedTxSigned="handleTxSigned">
             </common-sign-shared>
         </div>
-            
-        <div class="btns-container">        
+
+        <div class="btns-container">
                 <a-button type="primary" class="btn-next" @click="confirm">
                 {{$t('pax.confirm')}}</a-button>
             </div>
-        
+
         <a-modal
             :title="$t('sharedTx.startTx')"
             :visible="visible"
@@ -87,7 +87,7 @@
 <script>
 import CommonSignShared from '../../Common/CommonSignShared'
 import {utils, TransactionBuilder, Crypto, Parameter, ParameterType} from 'ontology-ts-sdk'
-import {GAS_LIMIT, GAS_PRICE} from '../../../../core/consts'
+import {GAS_LIMIT, GAS_PRICE} from '../../../core/consts'
 export default {
     name: 'StartSharedTx',
     props: ['sharedWallet','localSigners'],
@@ -151,7 +151,7 @@ export default {
                 this.$message.error(this.$t('sharedTx.paramsError'))
                 return null
             }
-            
+
         },
         confirm() {
             const isFirstSign = true;

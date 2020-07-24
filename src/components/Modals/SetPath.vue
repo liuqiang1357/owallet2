@@ -19,7 +19,7 @@
 <script>
   import $ from 'jquery'
   import {mapState} from 'vuex'
-  import { validateKeystorePath } from '../../../core/utils'
+  import { validateKeystorePath } from '../../core/utils'
 
   const {dialog} = require('electron').remote;
 

@@ -1,11 +1,11 @@
 import { NODE_CURRENT_STAKES,OFF_CHAIN_NODES,  VOTE_ROLE, DEFAULT_SCRYPT, ONT_PASS_NODE, ONT_PASS_NODE_PRD,
-    ONT_PASS_URL } from '../../../core/consts'
-import httpService, { getRestClient } from '../../../core/utils'
+    ONT_PASS_URL } from '../../core/consts'
+import httpService, { getRestClient } from '../../core/utils'
 import { TransactionBuilder, Crypto, utils, Parameter, ParameterType, TxSignature, WebsocketClient } from 'ontology-ts-sdk'
 import {
     message
 } from 'ant-design-vue'
-import i18n from '../../../common/lang';
+import i18n from '../../lang';
 import axios from 'axios';
 
 const gasPrice = '2500'
@@ -337,7 +337,7 @@ const actions = {
             const txes = hashes.map(hash => {
                 return TransactionBuilder.makeWasmVmInvokeTransaction('getTopicInfo', [new Parameter('', ParameterType.H256, hash)], contract, gasPrice, gasLimit)
             })
-            
+
             let infos = await Promise.all(txes.map(tx => { return client.sendRawTransaction(tx.serialize(), true) }))
             // infos = infos.map(item => item.Result.Result)
             let infoList = []
@@ -367,7 +367,7 @@ const actions = {
                 const old_txes = oldHashes.map(hash => {
                     return TransactionBuilder.makeInvokeTransaction('getTopicInfo', [new Parameter('', ParameterType.ByteArray, hash)], contractOld, gasPrice, gasLimit)
                 })
-                
+
                 let infosOld = await Promise.all(old_txes.map(tx => { return client.sendRawTransaction(tx.serialize(), true) }))
                 // infos = infos.map(item => item.Result.Result)
                 let infoListOld = []
@@ -388,7 +388,7 @@ const actions = {
             dispatch('hideLoadingModals')
             message.error(i18n.t('common.networkErr'))
         }
-        
+
     },
     async getAdminVotes({ commit, dispatch, state }) {
         // dispatch('showLoadingModals')
@@ -559,12 +559,12 @@ const actions = {
                     item.name = voter_with_name ? voter_with_name.name : ''
                 }
             }
-            
+
             commit('UPDATE_CURRENT_VOTE_RECORDS', {records})
         }
         return;
     },
-    
+
     setCurrentVote({ commit }, { vote }) {
         commit('UPDATE_CURRENT_VOTE', {vote})
     },

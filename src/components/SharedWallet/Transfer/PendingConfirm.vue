@@ -116,11 +116,11 @@
             <div class="asset-item">
                 <span class="font-medium">{{$t('sharedWalletHome.amount')}}</span>
                 <span class="font-medium-black">{{pendingTx.amount}} {{pendingTx.assetName}}</span>
-                              
+
             </div>
             <div class="asset-item">
-                <span class="font-medium">{{$t('sharedWalletHome.recipient')}}</span>  
-                <span class="font-medium-black">{{pendingTx.receiveaddress}}</span>                
+                <span class="font-medium">{{$t('sharedWalletHome.recipient')}}</span>
+                <span class="font-medium-black">{{pendingTx.receiveaddress}}</span>
             </div>
             <div class="fee font-medium-black">{{$t('sharedWalletHome.fee')}}: {{gas}} ONG</div>
         </div>
@@ -147,19 +147,19 @@
             </div>
         </div>
 
-        
+
 
         <div class="confirm-btns" v-if="showSign">
-            <div class="btns-container">          
+            <div class="btns-container">
                 <a-button type="primary" class="btn-next" @click="next">{{$t('sharedWalletHome.sign')}}</a-button>
             </div>
-            
+
         </div>
     </div>
 </template>
 <script>
 import {mapState} from 'vuex'
-import dbService from '../../../../core/dbService'
+import dbService from '../../../core/dbService'
 import { BigNumber } from 'bignumber.js';
 export default {
     name: 'PendingConfirm',
@@ -173,7 +173,7 @@ export default {
             showSign:false
         }
     },
-    
+
     computed:{
         ...mapState({
             pendingTx: state => state.CurrentWallet.pendingTx,

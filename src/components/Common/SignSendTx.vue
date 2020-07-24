@@ -23,9 +23,9 @@
 <script>
 import {mapState} from 'vuex'
 import delay from 'delay'
-import {DEFAULT_SCRYPT} from '../../../core/consts'
-import { getRestClient } from '../../../core/utils'
-import {legacySignWithLedger} from '../../../core/ontLedger'
+import {DEFAULT_SCRYPT} from '../../core/consts'
+import { getRestClient } from '../../core/utils'
+import {legacySignWithLedger} from '../../core/ontLedger'
 import {Crypto, TransactionBuilder, TxSignature, utils, RestClient, WebsocketClient, Transaction, OntAssetTxBuilder} from 'ontology-ts-sdk'
 // common component to sign tx or messages with wallet or ledger.
 

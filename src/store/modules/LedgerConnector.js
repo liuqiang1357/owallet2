@@ -1,6 +1,6 @@
-import { getDeviceInfo, getPublicKey } from '../../../core/ontLedger'
-import en from '../../../common/lang/en'
-import zh from '../../../common/lang/zh'
+import { getDeviceInfo, getPublicKey } from '../../core/ontLedger'
+import en from '../../lang/en'
+import zh from '../../lang/zh'
 import { Crypto } from 'ontology-ts-sdk'
 
 
@@ -28,7 +28,7 @@ function getDevice(commit, state) {
         if (err === 'NOT_FOUND') {
             commit('UPDATE_LEDGER_STATUS', { ledgerStatus: formatLedgerStatus('NOT_FOUND')})
         } else if (err === 'NOT_SUPPORT') {
-            commit('UPDATE_LEDGER_STATUS', { ledgerStatus: formatLedgerStatus('NOT_SUPPORT') })            
+            commit('UPDATE_LEDGER_STATUS', { ledgerStatus: formatLedgerStatus('NOT_SUPPORT') })
         } else {
             commit('UPDATE_LEDGER_STATUS', { ledgerStatus: formatLedgerStatus('NO_DEVICE') })
         }
@@ -41,12 +41,12 @@ function getLedgerPublicKey(commit, state) {
     // }
     getPublicKey().then(res => {
         console.log('pk info: ' + res);
-        commit('UPDATE_LEDGER_PUBLICKEY', { publicKey: res })        
+        commit('UPDATE_LEDGER_PUBLICKEY', { publicKey: res })
         commit('UPDATE_LEDGER_STATUS', { ledgerStatus: formatLedgerStatus('READY') })
         getLedgerWallet(commit, res)
     }).catch(err => {
         console.log(err.message)
-        commit('UPDATE_LEDGER_STATUS', { ledgerStatus: formatLedgerStatus('NOT_OPEN') })        
+        commit('UPDATE_LEDGER_STATUS', { ledgerStatus: formatLedgerStatus('NOT_OPEN') })
     })
 }
 

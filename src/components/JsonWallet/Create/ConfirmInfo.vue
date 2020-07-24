@@ -24,11 +24,11 @@
 <script>
   import {mapState} from 'vuex'
   import {Crypto, Wallet, Account} from 'ontology-ts-sdk'
-  import FileHelper from "../../../../core/fileHelper"
-  import dbService from '../../../../core/dbService'
-  import {WALLET_TYPE,DEFAULT_SCRYPT} from '../../../../core/consts'
-  import en from '../../../../common/lang/en'
-  import zh from '../../../../common/lang/zh'
+  import FileHelper from "../../../core/fileHelper"
+  import dbService from '../../../core/dbService'
+  import {WALLET_TYPE,DEFAULT_SCRYPT} from '../../../core/consts'
+  import en from '../../../lang/en'
+  import zh from '../../../lang/zh'
 
   export default {
     name: 'ConfirmInfo',

@@ -76,17 +76,17 @@
                 </div>
             </div>
 
-        
+
             <div class="input-btns" >
                 <a-button type="default" class="btn-cancel" @click="back">{{$t('sharedWalletHome.back')}}</a-button>
-                <a-button type="primary" class="btn-next" @click="submit"  
+                <a-button type="primary" class="btn-next" @click="submit"
                 :disabled="sending || !checked
                 || sponsorWallet.type === 'CommonWallet' && !password
                 || sponsorWallet.type === 'HardwareWallet' && !ledgerPk">
                     {{$t('sharedWalletHome.submit')}}
                     </a-button>
             </div>
-                
+
         </div>
 
     </div>
@@ -96,11 +96,11 @@
 import {mapState} from 'vuex'
 import draggable from 'vuedraggable'
 import {OntAssetTxBuilder, Crypto, TransactionBuilder, TxSignature, utils, Oep4} from 'ontology-ts-sdk'
-import {ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, DEFAULT_SCRYPT} from '../../../../core/consts'
+import {ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, DEFAULT_SCRYPT} from '../../../core/consts'
 import axios from 'axios'
-import dbService from '../../../../core/dbService'
+import dbService from '../../../core/dbService'
 import { BigNumber } from 'bignumber.js';
-import {legacySignWithLedger} from '../../../../core/ontLedger'
+import {legacySignWithLedger} from '../../../core/ontLedger'
 
 export default {
     name:'InputPassword',
@@ -120,7 +120,7 @@ export default {
             transfer: state => state.CurrentWallet.transfer,
             redeem: state => state.CurrentWallet.redeem,
             ledgerStatus: state => state.LedgerConnector.ledgerStatus,
-            ledgerPk : state => state.LedgerConnector.publicKey,            
+            ledgerPk : state => state.LedgerConnector.publicKey,
         })
     },
 
@@ -177,7 +177,7 @@ export default {
                 const to = new Crypto.Address(this.transfer.to);
                 if(tokenType === 'ONT' || tokenType === 'ONG') {
                     amount = tokenType === 'ONT' ? this.transfer.amount : new BigNumber(this.transfer.amount).multipliedBy(1e9);
-                    
+
                     tx = OntAssetTxBuilder.makeTransferTx(tokenType, from, to, amount, gasPrice, gasLimit, from);
                 } else { // now only supports oep4
                     const contractAddr = new Crypto.Address(utils.reverseHex(this.transfer.scriptHash));
@@ -185,13 +185,13 @@ export default {
                     amount = new BigNumber(this.transfer.amount).multipliedBy(Math.pow(10, this.transfer.decimal)).toString()
                     tx = oep4.makeTransferTx(from, to, amount, gasPrice, gasLimit, from);
                 }
-            }    
+            }
             this.$store.dispatch('showLoadingModals')
             //sign tx
             const M = this.sharedWallet.requiredNumber;
             const pks = this.sharedWallet.coPayers.map(p => new Crypto.PublicKey(p.publickey))
             //sponsorWallet
-            
+
             if (this.sponsorWallet.type === 'CommonWallet') {
                 const enc = new Crypto.PrivateKey(this.sponsorWallet.wallet.key)
                 let pri;

@@ -42,7 +42,7 @@
                 <a-radio value="ledgerWallet" class="payer-radio-item">{{$t('createIdentity.ledgerWallet')}}</a-radio>
 
                 <div v-if="payerWalletType === 'commonWallet'">
-                    <a-select :options="normalWallet" class="select-ontid" 
+                    <a-select :options="normalWallet" class="select-ontid"
                     :placeholder="$t('createIdentity.selectCommonWallet')"
                         @change="handleChangePayer">
                     </a-select>
@@ -55,7 +55,7 @@
                     <span class="font-medium-black">{{$t('ledgerWallet.status')}}: </span>
                     <span class="font-medium">{{ledgerStatus}} </span>
                     </div>
-                    
+
                 </div>
 
                 </a-radio-group>
@@ -73,7 +73,7 @@
 import Breadcrumb from "../../Breadcrumb";
 import { mapState } from "vuex";
 import axios from 'axios'
-import {ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL} from '../../../../core/consts'
+import {ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL} from '../../../core/consts'
 export default {
   name: "NodeStakeIntro",
   data() {
@@ -138,7 +138,7 @@ export default {
     handleRouteBack() {
       this.$router.go(-1);
     },
-    next() {     
+    next() {
         if(!this.stakeIdentity) {
             this.$message.error(this.$t('nodeStake.selectIdentity'))
             return;
@@ -172,7 +172,7 @@ export default {
      }).then(res => {
          if(res.data.QualifiedState === 0) {
              this.$store.commit('UPDATE_STAKE_IDENTITY', {stakeIdentity: this.stakeIdentity})
-             this.$store.commit('UPDATE_STAKE_WALLET', {stakeWallet: stakeWallet})             
+             this.$store.commit('UPDATE_STAKE_WALLET', {stakeWallet: stakeWallet})
          } else if(res.data.QualifiedState === 1) {
              this.$store.dispatch('hideLoadingModals')
              this.$message.error(this.$t('nodeStake.invalidOntid'))
@@ -198,9 +198,9 @@ export default {
          console.log(err)
          this.$store.dispatch('hideLoadingModals')
          this.$message.error(this.$t('common.networkErr'))
-     }) 
+     })
 
-      
+
     },
     changePayerWallet(e) {
         this.payerWalletType = e.target.value

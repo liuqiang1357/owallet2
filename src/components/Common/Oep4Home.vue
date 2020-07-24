@@ -134,15 +134,15 @@
     <div>
         <breadcrumb :current="$t('sharedWalletHome.send')" :routes="routes"
                 v-on:backEvent="handleBack"></breadcrumb>
-        
+
         <div class="content-container">
             <div class="left-half">
                 <div class="oep4-container">
                     <div class="home-title">
                         <p>OEP-4 Tokens</p>
-                        <a-icon class="refresh-icon" type="reload" @click="refresh"/>   
+                        <a-icon class="refresh-icon" type="reload" @click="refresh"/>
                     </div>
-                    
+
                     <div class="oep4-item" v-for="(token,index) of oep4s" :key="index" v-if="token.net === net">
                         <div class="font-medium-black">{{token.symbol}} - {{token.name}}</div>
                         <div class="oep4-balance">
@@ -186,7 +186,7 @@
             </div>
           </div>
 
-        <a-modal 
+        <a-modal
             :title="$t('commonWalletHome.addOep4')"
             :visible="showModal"
             @ok="handleAddOep4"
@@ -195,17 +195,17 @@
                 <div>
                     <p>{{$t('commonWalletHome.enterScripthash')}}</p>
                     <a-input class="input" v-model="scriptHash"  ></a-input>
-                </div>   
+                </div>
             </div>
-        </a-modal>  
+        </a-modal>
     </div>
 </template>
 
 <script>
 import Breadcrumb from '../Breadcrumb'
 import {mapState} from 'vuex'
-import { TEST_NET } from '../../../core/consts'
-import { open } from '../../../core/utils'
+import { TEST_NET } from '../../core/consts'
+import { open } from '../../core/utils'
 
 export default {
     name: 'Oep4Home',
@@ -279,7 +279,7 @@ export default {
                     this.$message.success(this.$t('commonWalletHome.addOep4Success'))
                 } else if(res === 'NO_CONTRACT') {
                     this.$message.success(this.$t('commonWalletHome.noOep4Contract'))
-                } else if (res === 'NETWORK_ERROR') {   
+                } else if (res === 'NETWORK_ERROR') {
                     this.$message.success(this.$t('commonWalletHome.networkError'))
                 }
             })

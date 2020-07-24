@@ -155,7 +155,7 @@
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="import-json-wif-pills" role="tabpanel"
            aria-labelledby="import-json-wif-pills-tab">
-        <a-input class="input" :placeholder="$t('importJsonWallet.label')" 
+        <a-input class="input" :placeholder="$t('importJsonWallet.label')"
                 v-validate="{required: true}" name="wifLabel" :data-vv-as="$t('FormField.label')"
                 v-model="wifLabel"></a-input>
         <span class="v-validate-span-errors" v-show="errors.has('wifLabel')">{{ errors.first('wifLabel') }}</span>
@@ -233,7 +233,7 @@
         <span class="v-validate-span-errors" v-show="errors.has('mnemonicRePassword')">{{ errors.first('mnemonicRePassword') }}</span>
       </div>
     </div>
-    <a-modal 
+    <a-modal
         :title="$t('importJsonWallet.confirmImport')"
         :visible="confirmModal"
         @ok="handleConfirmOk"
@@ -257,11 +257,11 @@
 <script>
   import {mapState} from 'vuex'
   import {Wallet, Account, Crypto} from "ontology-ts-sdk"
-  import FileHelper from "../../../../core/fileHelper"
-  import dbService from '../../../../core/dbService'
-  import {DEFAULT_SCRYPT} from '../../../../core/consts'
+  import FileHelper from "../../../core/fileHelper"
+  import dbService from '../../../core/dbService'
+  import {DEFAULT_SCRYPT} from '../../../core/consts'
   import $ from 'jquery'
-  import {isHexString, convertScryptParams} from '../../../../core/utils'
+  import {isHexString, convertScryptParams} from '../../../core/utils'
 
   export default {
     name: 'BasicInfo',
@@ -419,10 +419,10 @@
             this.$message.error(this.$t('importJsonWallet.invalidDatFile'))
             return;
           }
-          
+
           const enc = new Crypto.PrivateKey(account.key);
           const address = new Crypto.Address(account.address)
-          let scrypt = convertScryptParams(wallet.scrypt) 
+          let scrypt = convertScryptParams(wallet.scrypt)
           let pri;
           try {
             pri = enc.decrypt(this.datPassword, address, account.salt, scrypt)
@@ -499,7 +499,7 @@
       },
       handleConfirmOk() {
         if(this.updatingWallet) {
-          dbService.update({address: this.updatingWallet.address}, {$set:{wallet: this.updatingWallet.wallet}}, {}, 
+          dbService.update({address: this.updatingWallet.address}, {$set:{wallet: this.updatingWallet.wallet}}, {},
           (err,numReplaced) => {
             if(err) {
               this.$store.dispatch('hideLoadingModals')

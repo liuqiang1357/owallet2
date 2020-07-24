@@ -50,7 +50,7 @@
                 :class="validInput? '' : 'error-input'"></a-input>
             </div>
             <p class="authorize-tip">
-                <a-icon type="info-circle" /> 
+                <a-icon type="info-circle" />
                 <span class="font-regular">{{$t('nodeMgmt.stakeAmountTip')}}</span>
             </p>
             <div>
@@ -72,10 +72,10 @@
 </template>
 <script>
 import Breadcrumb from '../../Breadcrumb'
-import {varifyPositiveInt} from '../../../../core/utils.js'
+import {varifyPositiveInt} from '../../../core/utils.js'
 import SignSendTx from '../../Common/SignSendTx'
 import {mapState} from 'vuex'
-import {GAS_LIMIT, GAS_PRICE} from '../../../../core/consts'
+import {GAS_LIMIT, GAS_PRICE} from '../../../core/consts'
 import {Crypto, GovernanceTxBuilder, utils} from 'ontology-ts-sdk'
 
 export default {
@@ -114,7 +114,7 @@ export default {
                 this.validInput = false;
                 return;
             }
-            
+
             this.validInput = true;
         },
         handleCancel() {

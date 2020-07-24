@@ -28,7 +28,7 @@
                <div class="node-stake-icon"></div>
           </a-tooltip>
       </router-link>
-      
+
       <router-link :to="{name:'Dapps'}" active-class="nav-dapps-active">
           <a-tooltip placement="right" :title="$t('dapps.dapps')">
               <div class="nav-dapps"></div>
@@ -36,7 +36,7 @@
         </router-link>
 
         <!-- <div class="setting-img" alt="" @click="toSetting"></div> -->
-      
+
       <a-tooltip placement="right" :title="$t('setting.help')">
                <div class="nav-help" @click="toHelp"></div>
           </a-tooltip>
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { open } from '../../core/utils'
+import { open } from '../core/utils'
 
 export default {
   name: "TopLeftNav",

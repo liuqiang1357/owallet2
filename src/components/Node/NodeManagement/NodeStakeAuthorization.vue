@@ -52,7 +52,7 @@
 
 }
 .reward-slider {
-    width:40%; 
+    width:40%;
     float: left;
     margin-right: 16px;
 }
@@ -86,7 +86,7 @@
     margin-right: 20px;
 }
 .allowed-stake {
-    margin:10px 15px; 
+    margin:10px 15px;
 }
 .redeem-btn {
     width: 100px;
@@ -134,14 +134,14 @@
         <div class="font-medium-black header-text">{{$t('nodeMgmt.allowStakes')}}</div>
         <div class="allowed-stake">
             <span class="font-medium">{{$t('nodeMgmt.allowedStakeUnits')}}: </span>
-            <a-input class="input unit-input" :class="validUnit?'':'error-input' " v-model="unit" 
+            <a-input class="input unit-input" :class="validUnit?'':'error-input' " v-model="unit"
             @change="validateUnit"
             ></a-input>
             <span class="font-medium">{{$t('nodeMgmt.allowedStakeAmount')}}: </span>
             <span>{{unit*unitVal}} ONT</span>
             <span class="font-medium" style="margin-left:20px;">({{$t('nodeMgmt.current')}} {{peer_attrs.maxAuthorizeStr}} ONT)</span>
             <p class="authorize-tip">
-                <a-icon type="info-circle" /> 
+                <a-icon type="info-circle" />
                 <span class="font-regular">{{$t('nodeMgmt.stakeAmountTip')}}</span>
             </p>
             <a-button type="primary" class="btn-next" @click="confirmChangeAuthorization">{{$t('nodeMgmt.confirm')}}</a-button>
@@ -163,7 +163,7 @@
                     <span>{{current_peer.totalPosStr}} ONT</span>
                 </div>
             </div>
-            
+
             <div class="rewardsTip">
                 <a-icon type="exclamation-circle-o" />
                 <span class="font-regular">{{$t('nodeMgmt.rewardsTip')}}</span>
@@ -173,13 +173,13 @@
             <div class="font-medium-black rewardProportionTip">{{$t('nodeMgmt.rewardProportion')}}</div>
             <div class="node-reward-proportion">
                 <p class="font-medium">{{peer_attrs.tPeerCost}}%  ({{$t('nodeMgmt.activeT')}})</p>
-                <p class="font-medium">{{peer_attrs.t1PeerCost}}%  ({{$t('nodeMgmt.activeT1')}})</p>                
+                <p class="font-medium">{{peer_attrs.t1PeerCost}}%  ({{$t('nodeMgmt.activeT1')}})</p>
                 <p class="font-medium">{{peer_attrs.t2PeerCost}}%  ({{$t('nodeMgmt.activeT2')}})</p>
             </div>
             <a-button type="primary" class="btn-next edit-proportion-btn" @click="editProportion">{{$t('nodeMgmt.edit')}}</a-button>
         </div>
-        
-        
+
+
 
         <div class="redeem-profit">
             <div class="redeem-item">
@@ -193,7 +193,7 @@
                 <a-button type="primary" class="redeem-btn" @click="redeemPeerUnboundOng">{{$t('nodeMgmt.redeem')}}</a-button>
             </div>
         </div>
-       
+
         <sign-send-tx :visible="signVisible" :tx="tx"  :wallet="stakeWallet"
         v-on:signClose="handleCancel"
         v-on:txSent="handleTxSent"
@@ -224,14 +224,14 @@
                 <a-icon type="exclamation-circle-o" />
                 <span>{{$t('nodeMgmt.changesTakeEffect')}}</span>
             </div>
-    
+
         </a-modal>
     </div>
 </template>
 <script>
 import {mapState} from 'vuex'
-import {varifyPositiveInt} from '../../../../core/utils.js'
-import {GAS_PRICE, GAS_LIMIT} from '../../../../core/consts'
+import {varifyPositiveInt} from '../../../core/utils.js'
+import {GAS_PRICE, GAS_LIMIT} from '../../../core/consts'
 import numeral from 'numeral'
 import SignSendTx from '../../Common/SignSendTx'
 import {Crypto, GovernanceTxBuilder} from 'ontology-ts-sdk'

@@ -90,7 +90,7 @@
                 </div>
             <a slot="name" slot-scope="text, record" class="node-name" :class="record.status ===2 ? 'node-consensus' : 'node-candidate' "
                 @click="handleNodeDetail(record)">
-                
+
                 <a-tooltip placement="top" :title="$t('nodeMgmt.consensusNode')">
                     <a-icon type="star" v-if="record.status === 2" />
                 </a-tooltip>
@@ -109,7 +109,7 @@
 <script>
 import Breadcrumb from '../../Breadcrumb'
 import {mapState} from 'vuex'
-import { open } from '../../../../core/utils'
+import { open } from '../../../core/utils'
 export default {
     name: 'NodeList',
     components: {
@@ -173,12 +173,12 @@ export default {
         // } else {
         //     this.fetchList()
         // }
-        
+
         this.$store.dispatch('fetchBlockCountdown')
         this.intervalId = setInterval(()=>{
             // this.$store.dispatch('fetchNodeList')
             this.$store.dispatch('fetchBlockCountdown')
-        }, 6000)  
+        }, 6000)
     },
     beforeDestroy(){
         clearInterval(this.intervalId);
@@ -195,7 +195,7 @@ export default {
         },
         handleAuthorizeLogin(record, item){
             console.log(record)
-            this.$store.commit('UPDATE_STAKE_AUTHORIZATION_WALLET', {stakeWallet:''})            
+            this.$store.commit('UPDATE_STAKE_AUTHORIZATION_WALLET', {stakeWallet:''})
             this.$store.commit('UPDATE_CURRENT_NODE', {current_node: record})
             this.$router.push({name: 'AuthorizeLogin'})
         },

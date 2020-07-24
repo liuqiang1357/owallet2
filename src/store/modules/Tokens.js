@@ -2,7 +2,7 @@ import httpService, {
   getRestClient,
   getTokenListUrl,
   getTokenBalanceUrl
-} from '../../../core/utils'
+} from '../../core/utils'
 
 // should contain native, oep4, oep5, oep8 tokens
 const oep4_default = {

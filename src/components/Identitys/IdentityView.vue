@@ -21,15 +21,15 @@
           </a-menu-item>
           <a-menu-item key="2">
             <span  @click="deleteIdentity()">{{$t('common.deleteIdentity')}}</span>
-          </a-menu-item>          
+          </a-menu-item>
         </a-menu>
         <a-button style="margin-left: 8px">
           {{$t('common.more')}}<a-icon type="down" />
         </a-button>
-      </a-dropdown>      
+      </a-dropdown>
     </div>
 
-    <a-modal 
+    <a-modal
         :title="modalTitle"
         :visible="passModal"
         @ok="handleValidatePassword"
@@ -41,7 +41,7 @@
               <div >
                 <p>{{$t('common.enterIdentityPassword')}}</p>
                 <a-input class="input" v-model="password" :plaecholder="$t('common.password')" type="password"></a-input>
-              </div>   
+              </div>
           </div>
     </a-modal>
 
@@ -59,8 +59,8 @@
 
 <script>
   import {Wallet, Account, Crypto, Identity} from 'ontology-ts-sdk';
-  import dbService from '../../../core/dbService'
-  import { formatScryptParams } from '../../../core/utils'
+  import dbService from '../../core/dbService'
+  import { formatScryptParams } from '../../core/utils'
 	export default {
     name: "IdentityView",
     props: ['identity'],
@@ -107,7 +107,7 @@
         const controlData = this.identity.controls[0];
         const enc = new Crypto.PrivateKey(controlData.key)
         let pri;
-        const scrypt = this.identity.scrypt || 
+        const scrypt = this.identity.scrypt ||
         {
             n : 4096,
             p : 8,
@@ -126,7 +126,7 @@
         if(this.option === 'DELETE_ONTID') {
           this.handleDelete();
         } else if (this.option === 'EXPORT_ONTID') {
-          this.passModal = false;         
+          this.passModal = false;
           this.showIdentityKeystore = true;
           const keystore = {
             type : 'I',
@@ -142,11 +142,11 @@
           };
             this.keystore = JSON.stringify(keystore);
           this.$store.dispatch('hideLoadingModals')
-        } 
+        }
         this.password = '';
         pri.key = '';
       },
-      handleDelete() {      
+      handleDelete() {
         // remove from db
         const that = this;
         const type = 'Identity'
@@ -169,7 +169,7 @@
         this.keystore = '';
         this.showIdentityKeystore = false;
       }
-      
+
     }
   }
 </script>

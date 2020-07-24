@@ -109,21 +109,21 @@
             <div class="asset-item">
                 <span class="font-medium">{{$t('sharedWalletHome.amount')}}</span>
                 <span class="font-medium-black">{{redeem.claimableOng}} ONG</span>
-           
+
             </div>
             <div class="fee font-medium-black">{{$t('sharedWalletHome.fee')}}: 0.05 ONG</div>
         </div>
-        
+
         <p class="label" v-if="!transfer.isRedeem">{{$t('sharedWalletHome.send')}}</p>
         <div class="asset-table" v-if="!transfer.isRedeem">
             <div class="asset-item">
                 <span class="font-medium">{{$t('sharedWalletHome.amount')}}</span>
                 <span class="font-medium-black">{{transfer.amount}} {{transfer.asset}}</span>
-                              
+
             </div>
             <div class="asset-item">
-                <span class="font-medium">{{$t('sharedWalletHome.recipient')}}</span>  
-                <span class="font-medium-black">{{transfer.to}}</span>                
+                <span class="font-medium">{{$t('sharedWalletHome.recipient')}}</span>
+                <span class="font-medium-black">{{transfer.to}}</span>
             </div>
             <div class="fee font-medium-black">{{$t('sharedWalletHome.fee')}}: {{transfer.gas}} ONG</div>
         </div>
@@ -151,21 +151,21 @@
             </draggable>
         </div>
 
-        
+
 
         <div class="confirm-btns">
             <div class="btns-container">
-                <a-button type="default" class="btn-cancel" @click="back">{{$t('sharedWalletHome.back')}}</a-button>            
+                <a-button type="default" class="btn-cancel" @click="back">{{$t('sharedWalletHome.back')}}</a-button>
                 <a-button type="primary" class="btn-next" @click="next">{{$t('sharedWalletHome.next')}}</a-button>
             </div>
-            
+
         </div>
     </div>
 </template>
 <script>
 import draggable from 'vuedraggable'
 import {mapState} from 'vuex'
-import dbService from '../../../../core/dbService'
+import dbService from '../../../core/dbService'
 export default {
     name: 'SendConfirm',
     data() {

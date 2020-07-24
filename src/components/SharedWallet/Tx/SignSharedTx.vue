@@ -22,7 +22,7 @@
 }
 .label {
     width:200px;
-    margin-right:10px;         
+    margin-right:10px;
 }
 .select-sponsor {
     flex:1;
@@ -39,7 +39,7 @@
              <div class="input-item">
                  <p class="label">{{$t('sharedTx.txContent')}}</p>
                  <a-textarea v-model="txbody"></a-textarea>
-            </div>           
+            </div>
         </div>
         <p class="tx-title">{{$t('sharedTx.currentSign')}}</p>
         <div class="tx-content">
@@ -47,19 +47,19 @@
                 <span class="label">{{$t('sharedTx.selectSigner')}}</span>
                 <a-select :options="localSigners" class="select-sponsor"  @change="handleChangeSigner"></a-select>
             </div>
-        
+
             <common-sign-shared
                 ref="commonSign"
-                :wallet="signer" 
+                :wallet="signer"
                 @sharedTxSigned="handleTxSigned">
             </common-sign-shared>
         </div>
-            
-        <div class="btns-container">        
+
+        <div class="btns-container">
                 <a-button type="primary" class="btn-next" @click="confirm">
                 {{$t('pax.confirm')}}</a-button>
             </div>
-        
+
         <a-modal
             :title="$t('sharedTx.addSign')"
             :visible="visible"
@@ -80,7 +80,7 @@
     </div>
 </template>
 <script>
-import {getNodeUrl, getRestClient} from '../../../../core/utils'
+import {getNodeUrl, getRestClient} from '../../../core/utils'
 import {Transaction, Crypto, TransactionBuilder, TxSignature, utils, RestClient} from 'ontology-ts-sdk'
 import CommonSignShared from '../../Common/CommonSignShared'
 

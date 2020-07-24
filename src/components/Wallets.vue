@@ -103,7 +103,7 @@
   import JsonWalletDetails from './JsonWallet/View/Details'
   import SharedWalletDetails from './SharedWallet/View/Details'
   import SetPathModal from './Modals/SetPath'
-  import { open } from '../../core/utils'
+  import { open } from '../core/utils'
 
   export default {
     name: 'Wallets',
@@ -124,7 +124,7 @@
         hardwareWallet: state => state.Wallets.HardwareWallet
       })
     },
-    mounted() {    
+    mounted() {
       this.$store.dispatch('fetchWalletsFromDb')
       this.isSetPath()
     },
@@ -146,7 +146,7 @@
       setActiveTab(index) {
         sessionStorage.setItem('Wallets_Tab', index);
       },
-      toLedgerHelp() {        
+      toLedgerHelp() {
         // Load a remote URL
         open('https://support.ledgerwallet.com/hc/en-us/articles/360007583514')
       }

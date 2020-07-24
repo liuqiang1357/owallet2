@@ -369,8 +369,8 @@ import {
   ONT_PASS_NODE_PRD,
   ONT_PASS_URL,
   PAX_SC_HASH
-} from "../../../core/consts";
-import dbService from "../../../core/dbService";
+} from "../../core/consts";
+import dbService from "../../core/dbService";
 import axios from "axios";
 import Breadcrumb from "../Breadcrumb";
 import { BigNumber } from "bignumber.js";
@@ -381,7 +381,7 @@ import {
   getRestClient,
   getTransactionListUrl,
   getBalanceUrl
-} from "../../../core/utils";
+} from "../../core/utils";
 import { TransactionBuilder, Crypto, utils } from "ontology-ts-sdk";
 const ONG_GOVERNANCE_CONTRACT = "AFmseVrdL9f9oyCzZefL9tG6UbviEH9ugK";
 export default {

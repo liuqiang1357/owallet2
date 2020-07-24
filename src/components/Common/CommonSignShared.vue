@@ -8,14 +8,14 @@
 }
 .sign-content {
     flex:1;
-   
+
 }
 
 </style>
 <template>
     <div class="sign-container">
         <p class="label">{{$t('sharedTx.signTx')}}</p>
-            
+
         <div class="sign-content">
             <div v-if="wallet.type === 'CommonWallet'">
                 <a-input type="password" class="input-pass" :placeholder="$t('pax.inputPassword')" v-model="password"></a-input>
@@ -33,9 +33,9 @@
 
 <script>
 import {mapState} from 'vuex'
-import {DEFAULT_SCRYPT} from '../../../core/consts'
-import {decryptWallet} from '../../../core/utils'
-import {legacySignWithLedger} from '../../../core/ontLedger'
+import {DEFAULT_SCRYPT} from '../../core/consts'
+import {decryptWallet} from '../../core/utils'
+import {legacySignWithLedger} from '../../core/ontLedger'
 import {Crypto, Transaction, TransactionBuilder, TxSignature, utils, RestClient} from 'ontology-ts-sdk'
 
 export default {
@@ -66,7 +66,7 @@ export default {
     },
     methods: {
         async signSharedTx(isFirstSign, tx) {
-            if(this.wallet.type === 'CommonWallet' && !this.password 
+            if(this.wallet.type === 'CommonWallet' && !this.password
             || this.wallet.type === 'HardwareWallet' && !this.ledgerPk) {
                 return;
             }

@@ -3,7 +3,7 @@
     <p><b>{{$t('createIdentity.label')}}: </b> {{label}}</p>
     <p><b>{{$t('createIdentity.ontid')}}: </b> {{ ontid }}</p>
 
-   
+
     <div class="confirm-btns">
       <div class="confirm-btn-container">
         <a-button type="default" class="btn-cancel" @click="back">{{ $t('createJsonWallet.back') }}</a-button>
@@ -16,11 +16,11 @@
 <script>
   import {mapState} from 'vuex'
   import {Crypto, Wallet, Account} from 'ontology-ts-sdk'
-  import FileHelper from "../../../../core/fileHelper"
-  import dbService from '../../../../core/dbService'
-  import {WALLET_TYPE,DEFAULT_SCRYPT} from '../../../../core/consts'
-  import en from '../../../../common/lang/en'
-  import zh from '../../../../common/lang/zh'
+  import FileHelper from "../../../core/fileHelper"
+  import dbService from '../../../core/dbService'
+  import {WALLET_TYPE,DEFAULT_SCRYPT} from '../../../core/consts'
+  import en from '../../../lang/en'
+  import zh from '../../../lang/zh'
 
   export default {
     name: 'ConfirmInfo',

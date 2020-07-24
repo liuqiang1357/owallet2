@@ -46,7 +46,7 @@
         <breadcrumb :routes="routes" :current="$t('sharedWalletHome.paxMgmt')" @backEvent="handleBack"></breadcrumb>
         <div class="pax-container">
             <div class="pax-header">
-                
+
                 <!-- <a-button class="btn-ethScan" @click="toEthScan">{{$t('pax.toEthScan')}}</a-button> -->
                 <a-radio-group :value="status" @change="handleStatusChange" class="status-group">
                     <a-radio-button value="0">{{$t('sharedWalletHome.unprocessed')}}</a-radio-button>
@@ -62,14 +62,14 @@
             <div class="table-btns">
                     <a-button type="primary" :disabled="selectedRowKeys.length < 1" @click="handleVarify">
                     {{$t('pax.toVarify')}}</a-button>
-                    <a-button type="primary" :disabled="selectedRowKeys.length < 1 || status === '1' && !currentSigner" 
+                    <a-button type="primary" :disabled="selectedRowKeys.length < 1 || status === '1' && !currentSigner"
                     v-if="status === '0' || status === '1' " @click="handleProcess">{{$t('pax.toProcess')}}</a-button>
                 </div>
-           
-                <a-table :rowSelection="(status === '2' || status === '3') ? null : {selectedRowKeys: selectedRowKeys, onChange: onSelectChange}" 
+
+                <a-table :rowSelection="(status === '2' || status === '3') ? null : {selectedRowKeys: selectedRowKeys, onChange: onSelectChange}"
                 rowKey="Txhash"
-                :columns="currentColumns" 
-                :dataSource="data" 
+                :columns="currentColumns"
+                :dataSource="data"
                 :pagination="pagination"
                 @change="handleTableChange"
                 >
@@ -77,7 +77,7 @@
                     <a-icon type="arrow-right" @click="handleOpenTxDetail(record)" />
                 </div>
                 </a-table>
-            
+
 
         </div>
 
@@ -102,14 +102,14 @@
                 <a :href="item.url">{{item.txhash}}</a>
             </p>
         </a-modal>
-        
+
     </div>
 </template>
 <script>
 import Breadcrumb from '../../Breadcrumb'
-import {PAX_API} from '../../../../core/consts'
-import {convertNumber2Str, open} from '../../../../core/utils'
-import dbService from '../../../../core/dbService'
+import {PAX_API} from '../../../core/consts'
+import {convertNumber2Str, open} from '../../../core/utils'
+import dbService from '../../../core/dbService'
 import { BigNumber } from 'bignumber.js'
 
 export default {
@@ -199,7 +199,7 @@ export default {
                 data.oep4addresses.push(item.OntAddress),
                 data.amounts.push(item.Amount)
             })
-            this.$store.dispatch('showLoadingModals')        
+            this.$store.dispatch('showLoadingModals')
             const net = localStorage.getItem('net');
             const result = await this.httpService({
                 method:'post',
@@ -209,15 +209,15 @@ export default {
             const varifyFailedList = []
             const ethScanHost = net === 'TEST_NET' ? PAX_API.EthScanTest : PAX_API.EthScanMain
             for(let i = 0; i < result.Result.length; i++) {
-                if(result.Result[i] !== '0') { // 0: pass; 
+                if(result.Result[i] !== '0') { // 0: pass;
                     varifyFailedList.push(
                         {
                            txhash: data.txhashs[i],
                            url: ethScanHost + data.txhashs[i]
                         })
-                }  
-            }         
-            this.varifyFailedList = varifyFailedList;   
+                }
+            }
+            this.varifyFailedList = varifyFailedList;
             if(varifyFailedList.length === 0) {
                 this.$message.success(this.$t('pax.varifySuccess'))
             } else {
@@ -232,13 +232,13 @@ export default {
         handleStatusChange(e) {
             this.status = e.target.value
             // if(this.status === '3') {
-            //     this.currentColumns = [...this.columns, 
+            //     this.currentColumns = [...this.columns,
             //     {
             //         title: this.$t('pax.txDetail'),
             //         key: 'action',
             //         scopedSlots: {customRender:'action'}
             //     }]
-            // } 
+            // }
             // else {
             //     this.currentColumns = [...this.columns]
             // }
@@ -277,7 +277,7 @@ export default {
             this.visible = false;
         },
         handleProcess() {
-            
+
             let list = []
             for(let key in this.selectedRowsPerPage) {
                 list = list.concat(this.selectedRowsPerPage[key])
@@ -336,12 +336,12 @@ export default {
                     if(this.currentSigner) {
                         this.handleChangeCurrentSigner(this.currentSigner.address)
                     }
-                    
+
                     const total = res.TotalCount || res.Result.length;
                     this.pagination.total = total;
-                } 
-            } 
-            
+                }
+            }
+
         },
         updateLocalCopayers() {
             var that = this;

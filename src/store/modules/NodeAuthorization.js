@@ -1,16 +1,16 @@
-import { getNodeUrl} from '../../../core/utils'
-import {NODE_DETAIL, NODE_NAME_LIST, OFF_CHAIN_NODES, NODE_CURRENT_STAKES} from '../../../core/consts'
+import { getNodeUrl} from '../../core/utils'
+import {NODE_DETAIL, NODE_NAME_LIST, OFF_CHAIN_NODES, NODE_CURRENT_STAKES} from '../../core/consts'
 import numeral from 'numeral'
 import { Crypto, RestClient, utils, GovernanceTxBuilder} from 'ontology-ts-sdk'
 import {BigNumber} from 'bignumber.js'
-import {dbUpsert, dbFind} from '../../../core/dbService'
+import {dbUpsert, dbFind} from '../../core/dbService'
 import axios from 'axios';
 import {
   message
 } from 'ant-design-vue'
-import i18n from '../../../common/lang';
+import i18n from '../../lang';
 var dateFormat = require('dateformat');
-// import nodes from '../../../core/nodes.json'
+// import nodes from '../../core/nodes.json'
 
 //@Deprecated
 async function matchNodeName(list) {
@@ -47,7 +47,7 @@ async function matchNodeName(list) {
                 }
             }
         }
-    } 
+    }
 }
 
 async function fetchRoundBlocks() {
@@ -245,7 +245,7 @@ const actions = {
     },
     async fetchSplitFee({commit}, address) {
         const url = getNodeUrl();
-        const userAddr = new Crypto.Address(address);        
+        const userAddr = new Crypto.Address(address);
         const splitFee = await GovernanceTxBuilder.getSplitFeeAddress(userAddr, url)
         if(splitFee) {
             if(splitFee.amount) {
@@ -289,10 +289,10 @@ const actions = {
                 }
             })
             commit('UPDATE_STAKE_HISTORY', {history: list})
-            dispatch('hideLoadingModals')                        
+            dispatch('hideLoadingModals')
             return list;
         } catch(err) {
-            dispatch('hideLoadingModals')            
+            dispatch('hideLoadingModals')
             console.log(err)
             message.error(i18n.t('commonWalletHome.networkError'))
             return [];
@@ -366,12 +366,12 @@ const actions = {
                 item.detailUrl = NODE_DETAIL + item.peerPubkey;
             })
             console.log(JSON.stringify(list))
-            
+
             commit('UPDATE_NODE_LIST', {list});
             dispatch('hideLoadingModals')
             return list.length;
         } catch(err) {
-            console.log(err) 
+            console.log(err)
             dispatch('hideLoadingModals')
             return 0;
         }
@@ -413,7 +413,7 @@ const actions = {
             dispatch('hideLoadingModals')
             return 0;
         }
-        
+
     },
     async fetchBlockCountdown({commit}) {
         const url = getNodeUrl();
@@ -450,7 +450,7 @@ const actions = {
     async fetchPeerUnboundOng({commit}, address) {
         const url = getNodeUrl();
         const addr = new Crypto.Address(address);
-        try {   
+        try {
             let peerUnboundOng = await GovernanceTxBuilder.getPeerUnboundOng(addr, url);
             peerUnboundOng = new BigNumber(peerUnboundOng).div(1e9).toNumber();
             commit('UPDATE_PEER_UNBOUND_ONG', {peerUnboundOng})

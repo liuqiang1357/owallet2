@@ -149,12 +149,12 @@
                             <p>{{$t('pax.ledgerSignMultiTimes')}}</p>
                         </div>
                     </div>
-                    
+
             </div>
         </div>
         <div class="confirm-btns">
             <div class="btns-container">
-                <a-button type="default" class="btn-cancel" @click="back">{{$t('pax.back')}}</a-button>            
+                <a-button type="default" class="btn-cancel" @click="back">{{$t('pax.back')}}</a-button>
                 <a-button type="primary" class="btn-next" @click="confirm"
                 :disabled="sending || !currentSigner
                 || currentSigner.type === 'CommonWallet' && !password
@@ -176,11 +176,11 @@
 <script>
 import Breadcrumb from '../../Breadcrumb'
 import {mapState} from 'vuex'
-import { getRestClient } from '../../../../core/utils'
+import { getRestClient } from '../../../core/utils'
 import {Transaction, Crypto, TransactionBuilder, TxSignature, utils, RestClient} from 'ontology-ts-sdk'
-import {legacySignWithLedger} from '../../../../core/ontLedger'
-import {PAX_API} from '../../../../core/consts'
-import {decryptWallet} from '../../../../core/utils'
+import {legacySignWithLedger} from '../../../core/ontLedger'
+import {PAX_API} from '../../../core/consts'
+import {decryptWallet} from '../../../core/utils'
 
 export default {
     name: 'SignProcess',
@@ -210,8 +210,8 @@ export default {
         ...mapState({
             processing_list: state => state.PaxMgmt.processing_list,
             ledgerStatus: state => state.LedgerConnector.ledgerStatus,
-            ledgerPk : state => state.LedgerConnector.publicKey,    
-            currentSigner: state => state.PaxMgmt.currentSigner        
+            ledgerPk : state => state.LedgerConnector.publicKey,
+            currentSigner: state => state.PaxMgmt.currentSigner
         })
     },
     mounted() {
@@ -233,7 +233,7 @@ export default {
             if(this.processing_list.length === 0) {
                 return;
             }
-           
+
             this.$store.dispatch('showLoadingModals')
             const M = this.sharedWallet.requiredNumber;
             //避免已发交易被再签
@@ -267,7 +267,7 @@ export default {
                 if (!pri) {
                     return;
                 }
-                
+
                 for(let item of this.processing_list) {
                     const tx = Transaction.deserialize(item.Txbodyhash)
                     console.log(tx)
@@ -338,10 +338,10 @@ export default {
                 } else {
                     this.updateApprovalList(data)
                 }
-            
+
         },
-        async updateApprovalList(data) {    
-            this.$store.dispatch('showLoadingModals')        
+        async updateApprovalList(data) {
+            this.$store.dispatch('showLoadingModals')
             const net = localStorage.getItem('net');
             const result = await this.httpService({
                 method:'post',

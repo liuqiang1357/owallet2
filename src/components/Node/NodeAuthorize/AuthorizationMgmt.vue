@@ -95,7 +95,7 @@
                     <a-tooltip placement="top" :title="$t('nodeMgmt.switchWallet')">
                         <span class="switch-wallet" @click="switchWallet"><a-icon type="sync" /></span>
                     </a-tooltip>
-                    
+
                 </div>
                 <a-button type="primary" class="btn-next new-stake" @click="newStakeAuthorization">{{$t('nodeMgmt.newStakeAuthorization')}}</a-button>
                 <div class="in-authorization">
@@ -124,13 +124,13 @@
                             <a-tooltip placement="right" :title="$t('nodeMgmt.lockedONT')">
                                 <a-icon type="info-circle-o" />
                             </a-tooltip>
-                            {{$t('nodeMgmt.locked')}}: 
+                            {{$t('nodeMgmt.locked')}}:
                         </span>
                         <span class="font-medium">{{authorizationInfo.locked}} ONT</span>
                     </p>
                     <p class="redeem-item">
                         <span class="font-medium-black label">
-                            {{$t('nodeMgmt.claimable')}}: 
+                            {{$t('nodeMgmt.claimable')}}:
                         </span>
                         <span class="font-medium">{{authorizationInfo.claimable}} ONT</span>
                         <a-button type="primary" class="redeem-btn" @click="redeemOnt">{{$t('nodeMgmt.redeem')}}</a-button>
@@ -140,7 +140,7 @@
                             <a-tooltip placement="right" :title="$t('nodeMgmt.unboundONG')">
                                 <a-icon type="info-circle-o" />
                             </a-tooltip>
-                            {{$t('nodeMgmt.unboundOng')}}: 
+                            {{$t('nodeMgmt.unboundOng')}}:
                         </span>
                         <span class="font-medium">{{unboundOng}} ONG</span>
                         <!-- <a-button type="primary" class="redeem-btn" @click="redeemOng">{{$t('nodeMgmt.redeem')}}</a-button> -->
@@ -154,7 +154,7 @@
                         <a-tooltip placement="right" :title="$t('nodeMgmt.profitONG')">
                                 <a-icon type="info-circle-o" />
                             </a-tooltip>
-                        {{$t('nodeMgmt.profit')}}: 
+                        {{$t('nodeMgmt.profit')}}:
                     </span>
                     <span class="font-medium">{{splitFee.amount}} ONG</span>
                 </p>
@@ -166,7 +166,7 @@
                 </p>
             </div>
         </div>
-        <a-modal 
+        <a-modal
             :title="$t('nodeMgmt.cancelAuthorization')"
             :visible="cancelVisible"
             @ok="handleCancelAuthorizationOk"
@@ -201,10 +201,10 @@
 import Breadcrumb from '../../Breadcrumb'
 import {mapState} from 'vuex'
 import SignSendTx from '../../Common/SignSendTx'
-import {GAS_PRICE, GAS_LIMIT} from '../../../../core/consts'
+import {GAS_PRICE, GAS_LIMIT} from '../../../core/consts'
 import {Crypto, GovernanceTxBuilder, utils} from 'ontology-ts-sdk'
 import numeral from 'numeral'
-import {varifyPositiveInt} from '../../../../core/utils.js'
+import {varifyPositiveInt} from '../../../core/utils.js'
 
 export default {
     name:'AuthorizationMgmt',
@@ -231,13 +231,13 @@ export default {
 
         this.refresh();
         this.intervalId = setInterval(()=>{
-            this.refresh();            
+            this.refresh();
         }, 10000)
     },
     beforeDestroy(){
         clearInterval(this.intervalId)
     },
-    
+
     computed:{
         ...mapState({
             current_node: state => state.NodeAuthorization.current_node,
@@ -249,7 +249,7 @@ export default {
         }),
         inAuthorization: {
             get() {
-                
+
             }
         }
 

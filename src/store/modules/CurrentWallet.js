@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {
   getBalanceUrl
- } from '../../../core/utils'
+ } from '../../core/utils'
 
 const state = {
     wallet : {
@@ -36,7 +36,7 @@ const state = {
         isRedeem: false
     },
     pendingTx: {
-        
+
     },
     currentSigner: '',
     localCopayers : [],
@@ -53,7 +53,7 @@ const mutations = {
     },
     UPDATE_TRANSFER(state, payload) {
         state.transfer = Object.assign({}, state.transfer, payload.transfer)
-    }, 
+    },
     UPDATE_LOCAL_COPAYERS(state, payload) {
         state.localCopayers = payload.localCopayers
     },

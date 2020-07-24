@@ -28,11 +28,11 @@
       </div>
     </div>
   </div>
-  
+
 </template>
 <script>
-import en from '../../../common/lang/en'
-import zh from '../../../common/lang/zh'
+import en from '../../lang/en'
+import zh from '../../lang/zh'
 import BasicInfo from './Create/BasicInfo'
 import ConfirmSigNum from './Create/ConfirmSigNum'
 import CreateSuccess from './Create/CreateSuccess'

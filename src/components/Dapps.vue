@@ -98,7 +98,7 @@
 <script>
 import axios from "axios";
 import { isNumber, isNullOrUndefined } from "util";
-import { open } from "../../core/utils";
+import { open } from "../core/utils";
 
 export default {
     name: "Dapps",

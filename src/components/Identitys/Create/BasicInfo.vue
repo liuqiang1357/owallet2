@@ -2,10 +2,10 @@
   <div>
     <div class="basic-label">
       <a-input class="input" :placeholder="$t('createIdentity.label')" v-model="label"
-          v-validate="{required: true}" name="label" 
+          v-validate="{required: true}" name="label"
       ></a-input>
       <span class="v-validate-span-errors" v-show="errors.has('label')">{{ errors.first('label') }}</span>
-      
+
       <a-input type="password" class="input input-password"
                v-validate="{required: true ,min:6}" name="password"
                v-model="password" :placeholder="$t('createIdentity.password')"></a-input>
@@ -22,7 +22,7 @@
           <a-radio value="commonWallet">{{$t('createIdentity.commonWallet')}}</a-radio>
           <a-radio value="ledgerWallet">{{$t('createIdentity.ledgerWallet')}}</a-radio>
           <div v-if="payerWalletType === 'commonWallet'">
-           <a-select :options="localCommonWallet" class="select-payer-wallet" 
+           <a-select :options="localCommonWallet" class="select-payer-wallet"
            :placeholder="$t('createIdentity.selectCommonWallet')"
             @change="handleChangePayer">
            </a-select>
@@ -36,12 +36,12 @@
               <span class="font-medium-black">{{$t('ledgerWallet.status')}}: </span>
               <span class="font-medium">{{ledgerStatus}} </span>
             </div>
-            
+
           </div>
 
         </a-radio-group>
-        
-        
+
+
       </div>
     </div>
 
@@ -57,11 +57,11 @@
 <script>
   import {mapState} from 'vuex'
   import {Wallet, Account, Crypto, TransactionBuilder, TxSignature, RestClient} from "ontology-ts-sdk"
-  import FileHelper from "../../../../core/fileHelper"
-  import dbService from '../../../../core/dbService'
-  import {DEFAULT_SCRYPT, TEST_NET, MAIN_NET} from '../../../../core/consts'
-import {legacySignWithLedger} from '../../../../core/ontLedger'
-import { getRestClient } from '../../../../core/utils'
+  import FileHelper from "../../../core/fileHelper"
+  import dbService from '../../../core/dbService'
+  import {DEFAULT_SCRYPT, TEST_NET, MAIN_NET} from '../../../core/consts'
+import {legacySignWithLedger} from '../../../core/ontLedger'
+import { getRestClient } from '../../../core/utils'
 
   export default {
     name: 'BasicInfo',
@@ -103,7 +103,7 @@ import { getRestClient } from '../../../../core/utils'
                     }
 
                     for (let ac of accounts) {
-                      localpayers.push(Object.assign({}, ac.wallet, 
+                      localpayers.push(Object.assign({}, ac.wallet,
                       {value:ac.address, label:ac.wallet.label + ' ' + ac.address}))
                     }
                     that.localCommonWallet = localpayers
@@ -169,14 +169,14 @@ import { getRestClient } from '../../../../core/utils'
                       this.ledgerStatus = '';
                       this.$store.dispatch('hideLoadingModals')
                       alert(err.message)
-                  }) 
+                  })
               } else {
                   this.$message.warning(this.$t('ledgerWallet.connectApp'))
               }
               }
             })
 
-            
+
           }
         })
       },

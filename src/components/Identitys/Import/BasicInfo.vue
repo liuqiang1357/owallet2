@@ -36,11 +36,11 @@
 <script>
   import {mapState} from 'vuex'
   import {Wallet, Account, Crypto, Identity, OntidContract, RestClient, SDK} from "ontology-ts-sdk"
-  import FileHelper from "../../../../core/fileHelper"
-  import dbService from '../../../../core/dbService'
-  import {DEFAULT_SCRYPT, TEST_NET, MAIN_NET} from '../../../../core/consts'
+  import FileHelper from "../../../core/fileHelper"
+  import dbService from '../../../core/dbService'
+  import {DEFAULT_SCRYPT, TEST_NET, MAIN_NET} from '../../../core/consts'
   import $ from 'jquery'
-import { getNodeUrl, getRestClient, formatScryptParams } from '../../../../core/utils';
+import { getNodeUrl, getRestClient, formatScryptParams } from '../../../core/utils';
 
   export default {
     name: 'BasicInfo',
@@ -100,7 +100,7 @@ import { getNodeUrl, getRestClient, formatScryptParams } from '../../../../core/
             const addr = new Crypto.Address(keystore.address);
             const label = keystore.label || 'Identity'
             const salt = keystore.salt
-            //must call if use 
+            //must call if use
             let password = SDK.transformPassword(this.keystorePassword)
             let params = keystore.scrypt ? formatScryptParams(keystore.scrypt) : null;
             identity = Identity.importIdentity(label, encryptedPrivateKeyObj, password, addr, salt, params);
@@ -126,7 +126,7 @@ import { getNodeUrl, getRestClient, formatScryptParams } from '../../../../core/
                 this.saveToDb(identity)
             } else {
                 this.$message.error(this.$t('importIdentity.ontidNotExist'))
-                this.$store.dispatch('hideLoadingModals')            
+                this.$store.dispatch('hideLoadingModals')
                 return;
             }
           }

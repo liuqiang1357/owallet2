@@ -306,14 +306,14 @@
 
 <script>
   import {mapState} from 'vuex'
-  import {TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE} from '../../core/consts'
+  import {TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE} from '../core/consts'
   import {Crypto, OntAssetTxBuilder, RestClient, SDK} from 'ontology-ts-sdk'
   import axios from 'axios';
   import Breadcrumb from './Breadcrumb'
 import { BigNumber } from 'bignumber.js';
 import RedeemInfoIcon from './RedeemInfoIcon'
 import Oep4Selection from './Common/Oep4Selection'
-import { open, getRestClient, getTransactionListUrl, getBalanceUrl } from '../../core/utils'
+import { open, getRestClient, getTransactionListUrl, getBalanceUrl } from '../core/utils'
 const ONG_GOVERNANCE_CONTRACT = 'AFmseVrdL9f9oyCzZefL9tG6UbviEH9ugK'
 
   export default {

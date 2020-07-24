@@ -80,10 +80,10 @@
 </template>
 <script>
 import Breadcrumb from "../../../Breadcrumb";
-import { varifyPositiveInt } from "../../../../../core/utils.js";
+import { varifyPositiveInt } from "../../../../core/utils.js";
 import SignSendTx from "../../../Common/SignSendTx";
 import { mapState } from "vuex";
-import { GAS_LIMIT, GAS_PRICE } from "../../../../../core/consts";
+import { GAS_LIMIT, GAS_PRICE } from "../../../../core/consts";
 import { Crypto, TransactionBuilder, utils } from "ontology-ts-sdk";
 import { CONTRACT_HASH } from "./SesameseedVars";
 

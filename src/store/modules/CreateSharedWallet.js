@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL } from '../../../core/consts'
-import dbService from '../../../core/dbService'
+import { ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL } from '../../core/consts'
+import dbService from '../../core/dbService'
 const state = {
     currentStep: 0,
     label: '',
     address: '',
     copayers: [
         { name: '', publickey: ''},
-        { name: '', publickey: '' }       
+        { name: '', publickey: '' }
     ],
     requiredSigNum:2
 }

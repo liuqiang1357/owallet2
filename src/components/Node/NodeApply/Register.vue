@@ -35,20 +35,20 @@
 									</a-select>
 								</a-tab-pane>
 								<a-tab-pane key="2" :tab="$t('nodeApply.enterOperationPk')" >
-									<a-input v-model="operationPk" 
+									<a-input v-model="operationPk"
 									@blur="onSelectOperationWallet"
 									:placeholder="$t('nodeApply.enterOperationPk')"></a-input>
 								</a-tab-pane>
-								
+
 							</a-tabs>
-							
-							
+
+
 						</div>
 
 						<div class="form-item">
 							<label for="">{{$t('nodeApply.stakeAmount')}}</label>
 							<a-input v-model="stakeAmount"
-								type="number" 
+								type="number"
 								:class="validAmount ? '' : 'error-input' "
 								@change="validateAmount"
 								:placeholder="$t('nodeApply.inputStakeAmount')"></a-input>
@@ -87,7 +87,7 @@
                                     class="btn-next"
                                     @click="confirm">{{$t('nodeApply.ok')}}</a-button>
                         </div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -110,7 +110,7 @@ import Breadcrumb from "../../Breadcrumb";
 import SelectWallet from "../../Common/SelectWallet";
 import { Crypto, GovernanceTxBuilder } from "ontology-ts-sdk";
 import SignSendTx from '../../Common/SignSendTx'
-import { open, varifyPositiveInt } from '../../../../core/utils'
+import { open, varifyPositiveInt } from '../../../core/utils'
 
 export default {
 	name: "NodeApply",
@@ -203,7 +203,7 @@ export default {
 					this.operationPk = ''
 					return;
 				}
-				 
+
 				if (this.stakeWallet.address === address) {
 					this.$message.warning(
 						this.$t("nodeApply.sameWalletNotAllowed")
@@ -231,7 +231,7 @@ export default {
 			// this.$router.push({name: 'NodeApplySuccess'})
 			this.registerSucceed = true
 		},
-		
+
 		async onComplete() { // 进入节点管理页面且打开信息填写的tab
 			const nodePk = this.operationWallet ? this.operationWallet : this.operationPk
 			await this.$store.dispatch('newStakeInfo', {

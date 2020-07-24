@@ -9,7 +9,7 @@
           <div class="title">Login with Ledger</div>
           <p class="font-medium" >{{$t('ledgerWallet.connectApp')}}</p>
             <p>
-                <span class="font-medium-black">{{$t('ledgerWallet.status')}}: </span> 
+                <span class="font-medium-black">{{$t('ledgerWallet.status')}}: </span>
                 <span class="font-medium">{{ledgerStatus}}</span>
             </p>
         </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import {getDeviceInfo, getPublicKey} from '../../../core/ontLedger'
+  import {getDeviceInfo, getPublicKey} from '../../core/ontLedger'
   const interval = 3000;
   export default {
     name: 'LoginLedger',

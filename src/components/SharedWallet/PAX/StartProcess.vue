@@ -145,7 +145,7 @@
 
             <div class="sign-container" v-if="sponsorPayer">
                 <p class="label">{{$t('pax.sponsorSign')}}</p>
-                    
+
                 <div class="sign-content">
                     <div v-if="sponsorPayer.type === 'CommonWallet'">
                         <a-input type="password" class="input-pass" :placeholder="$t('pax.inputPassword')" v-model="password"></a-input>
@@ -163,7 +163,7 @@
 
         <div class="confirm-btns">
             <div class="btns-container">
-                <a-button type="default" class="btn-cancel" @click="back">{{$t('pax.back')}}</a-button>            
+                <a-button type="default" class="btn-cancel" @click="back">{{$t('pax.back')}}</a-button>
                 <a-button type="primary" class="btn-next" @click="confirm"
                 :disabled="sending || !sponsorPayer
                 || sponsorPayer.type === 'CommonWallet' && !password
@@ -176,12 +176,12 @@
 <script>
 import Breadcrumb from '../../Breadcrumb'
 import draggable from 'vuedraggable'
-import dbService from '../../../../core/dbService'
+import dbService from '../../../core/dbService'
 import {mapState} from 'vuex'
-import {legacySignWithLedger} from '../../../../core/ontLedger'
+import {legacySignWithLedger} from '../../../core/ontLedger'
 import {Transaction, Crypto, TransactionBuilder, TxSignature, utils} from 'ontology-ts-sdk'
-import {PAX_API} from '../../../../core/consts'
-import {decryptWallet} from '../../../../core/utils'
+import {PAX_API} from '../../../core/consts'
+import {decryptWallet} from '../../../core/utils'
 
 export default {
     name: 'StartProcess',
@@ -210,7 +210,7 @@ export default {
         ...mapState({
             unprocess_list: state => state.PaxMgmt.unprocess_list,
             ledgerStatus: state => state.LedgerConnector.ledgerStatus,
-            ledgerPk : state => state.LedgerConnector.publicKey,            
+            ledgerPk : state => state.LedgerConnector.publicKey,
         })
     },
     mounted() {
@@ -295,7 +295,7 @@ export default {
                 if (!pri) {
                     return;
                 }
-                
+
                 for(let item of this.unprocess_list) {
                     const tx = Transaction.deserialize(item.Rawtxdata)
                     tx.payer = new Crypto.Address(this.sharedWallet.sharedWalletAddress);
@@ -327,7 +327,7 @@ export default {
                     cosignerList.push(JSON.stringify(cosigner))
                 }
             }
-            
+
             const data = {
                 txhashs: txhashes,
                 cosigners: cosignerList,
@@ -349,7 +349,7 @@ export default {
                 this.$message.error(result.Error)
             }
         },
-        
+
     }
 }
 </script>

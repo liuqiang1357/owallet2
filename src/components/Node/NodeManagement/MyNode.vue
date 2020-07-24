@@ -42,8 +42,8 @@
 <script>
 import { mapState } from "vuex";
 import { GovernanceTxBuilder } from "ontology-ts-sdk";
-import { getNodeUrl } from "../../../../core/utils";
-import { OFF_CHAIN_NODES, GovernanceStatus } from "../../../../core/consts";
+import { getNodeUrl } from "../../../core/utils";
+import { OFF_CHAIN_NODES, GovernanceStatus } from "../../../core/consts";
 import axios from "axios";
 import Breadcrumb from "../../Breadcrumb";
 
@@ -85,7 +85,7 @@ export default {
         // 找出用户的节点，同时找出stake wallet，节点的运营公钥也能从接口获取到。
         // 再将用户的节点跟链上的peerPoolMap进行比对，获取节点的状态。如果节点不在peerPoolMap中，表示节点已经退出
 		async fetchMyNodes() {
-            this.$store.dispatch('showLoadingModals')  
+            this.$store.dispatch('showLoadingModals')
             const url = getNodeUrl();
 			const peers = await GovernanceTxBuilder.getPeerPoolMap(url);
 			const mynodes = [];
@@ -117,7 +117,7 @@ export default {
             }
 
             this.myNodes = mynodes;
-            this.$store.dispatch('hideLoadingModals')  
+            this.$store.dispatch('hideLoadingModals')
         },
         onManage(node) {
             this.$store.commit('UPDATE_STAKE_WALLET', {stakeWallet: node.stakeWallet})

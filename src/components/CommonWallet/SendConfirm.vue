@@ -166,12 +166,12 @@
                 <a-checkbox @change="onChange" :checked="checked" class="input-check">{{$t('sharedWalletHome.agreeToSend')}}</a-checkbox>
 
                 <a-input type="password" class="input"  v-if="isCommonWallet"
-                :placeholder="$t('sharedWalletHome.inputPassToTransfer')" 
+                :placeholder="$t('sharedWalletHome.inputPassToTransfer')"
                 v-model="password"></a-input>
 
                 <p class="font-medium" v-if="!isCommonWallet">{{$t('ledgerWallet.connectApp')}}</p>
                 <p v-if="ledgerStatus">
-                   <span class="font-medium-black">{{$t('ledgerWallet.status')}}: </span> 
+                   <span class="font-medium-black">{{$t('ledgerWallet.status')}}: </span>
                     <span class="font-medium">{{ledgerStatus}}</span>
                 </p>
             </div>
@@ -189,15 +189,15 @@
 </template>
 <script>
 import {mapState} from 'vuex'
-import {legacySignWithLedger} from '../../../core/ontLedger'
+import {legacySignWithLedger} from '../../core/ontLedger'
 import {Oep4} from 'ontology-ts-sdk'
-import { TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE, DEFAULT_SCRYPT } from '../../../core/consts'
+import { TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE, DEFAULT_SCRYPT } from '../../core/consts'
 import {Crypto, OntAssetTxBuilder, TransactionBuilder, utils, RestClient, TxSignature} from 'ontology-ts-sdk'
 import axios from 'axios';
-import {getDeviceInfo, getPublicKey} from '../../../core/ontLedger'
+import {getDeviceInfo, getPublicKey} from '../../core/ontLedger'
 import $ from 'jquery'
 import {BigNumber} from 'bignumber.js'
-import { getRestClient } from '../../../core/utils'
+import { getRestClient } from '../../core/utils'
 
 export default {
   name: 'SendConfirm',
@@ -317,7 +317,7 @@ export default {
       const gasLimit = '20000';
       const gas = (new BigNumber(this.transfer.gas)).multipliedBy(1e9);
       const gasPrice = gas.div(parseInt(gasLimit)).toString();
-  
+
       let tx;
       if(asset === 'ONT' || asset === 'ONG') {
         const amount = asset === 'ONT' ? this.transfer.amount : (new BigNumber(this.transfer.amount).multipliedBy(1e9)).toString();
@@ -331,7 +331,7 @@ export default {
         console.log(amount)
          tx = oep4.makeTransferTx(from, to, amount, gasPrice, gasLimit, from);
       }
-      
+
       if (this.isCommonWallet) {
         this.$store.dispatch('showLoadingModals')
         const enc = new Crypto.PrivateKey(this.currentWallet.key)
@@ -370,7 +370,7 @@ export default {
                 this.ledgerStatus = '';
                 this.$store.dispatch('hideLoadingModals')
                 alert(err.message)
-            }) 
+            })
         } else {
             this.$message.warning(this.$t('ledgerWallet.connectApp'))
         }

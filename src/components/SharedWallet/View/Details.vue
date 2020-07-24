@@ -12,10 +12,10 @@
     <div v-show="addressCopied" class="copied-label">Copied</div>
     <img class="img-wallet-copy" src="../../../assets/copy.png" @click="copyAddress(wallet)" alt="">
     <div class="common-topRight-btns">
-      <span class="common-delete-icon" @click="deleteWallet()" ></span>   
+      <span class="common-delete-icon" @click="deleteWallet()" ></span>
     </div>
 
-    <a-modal 
+    <a-modal
         :title="$t('common.confirmation')"
         :visible="showModal"
         @ok="handleDelete"
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import dbService from '../../../../core/dbService'
+import dbService from '../../../core/dbService'
 	export default {
 		name: "SharedWalletDetails",
     props: ['wallet'],
@@ -58,7 +58,7 @@ import dbService from '../../../../core/dbService'
       deleteWallet() {
         this.showModal = true;
       },
-      handleDelete() {      
+      handleDelete() {
         // remove from db
         this.$store.dispatch('showLoadingModals')
         const that = this;

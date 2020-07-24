@@ -29,15 +29,15 @@
           </a-menu-item>
           <a-menu-item key="4" @click="deleteWallet()">
             <span  >{{$t('common.deleteWallet')}}</span>
-          </a-menu-item>          
+          </a-menu-item>
         </a-menu>
         <a-button style="margin-left: 8px">
           {{$t('common.more')}}<a-icon type="down" />
         </a-button>
-      </a-dropdown>      
+      </a-dropdown>
     </div>
 
-    <a-modal 
+    <a-modal
         :title="modalTitle"
         :visible="passModal"
         @ok="handleValidatePassword"
@@ -51,11 +51,11 @@
               <div v-if="isCommonWallet">
                 <p>{{$t('common.enterWalletPassword')}}</p>
                 <a-input class="input" v-model="password" :plaecholder="$t('common.password')" type="password"></a-input>
-              </div>   
+              </div>
           </div>
     </a-modal>
 
-    <a-modal 
+    <a-modal
         :title="$t('common.changePassword')"
         :visible="changePassModal"
         @ok="handleChangePassOk"
@@ -79,7 +79,7 @@
               <a-input type="password" class="input change-password"
                       v-validate="{required: true , min:6, is:newPassword}" :data-vv-as="$t('FormField.newPasswordConfirmation')" name="reNewPassword"
                       v-model="reNewPassword" :placeholder="$t('wallets.reNewPassword')"></a-input>
-              <span class="v-validate-span-errors" v-show="errors.has('reNewPassword')">{{ errors.first('reNewPassword') }}</span> 
+              <span class="v-validate-span-errors" v-show="errors.has('reNewPassword')">{{ errors.first('reNewPassword') }}</span>
             </div>
 
           </div>
@@ -101,10 +101,10 @@
 
 <script>
   import {Wallet, Account} from 'ontology-ts-sdk';
-  import FileHelper from "../../../../core/fileHelper"
-  import {DEFAULT_SCRYPT} from '../../../../core/consts'
+  import FileHelper from "../../../core/fileHelper"
+  import {DEFAULT_SCRYPT} from '../../../core/consts'
   import {Crypto} from 'ontology-ts-sdk'
-  import dbService from '../../../../core/dbService'
+  import dbService from '../../../core/dbService'
 	export default {
     name: "JsonWalletDetails",
     props: ['wallet'],
@@ -132,7 +132,7 @@
           sessionStorage.setItem('currentWallet', JSON.stringify(wallet))
           this.$router.push({name: 'LoginLedger'})
         }
-        
+
       },
       copyAddress(wallet) {
         this.$copyText(wallet.address)
@@ -187,7 +187,7 @@
         if(this.option === 'TO_DELETE') {
           this.handleDelete();
         } else if (this.option === 'TO_EXPORT') {
-          this.passModal = false;         
+          this.passModal = false;
           this.exportWallet(this.wallet)
         } else if (this.option === 'EXPORT_WIF') {
           this.passModal = false;
@@ -201,7 +201,7 @@
         this.password = '';
         pri.key = '';
       },
-      handleDelete() {      
+      handleDelete() {
         // remove from db
         const that = this;
         const type = this.isCommonWallet ? 'CommonWallet' : 'HardwareWallet'
@@ -250,8 +250,8 @@
             const newEnc = pri.encrypt(this.newPassword, address, saltHex, DEFAULT_SCRYPT);
             this.wallet.key = newEnc.key;
             dbService.update(
-              {address: this.wallet.address}, 
-              {$set: {wallet: this.wallet}}, {}, 
+              {address: this.wallet.address},
+              {$set: {wallet: this.wallet}}, {},
               (err, numReplaced) => {
                 if(err) {
                   this.$store.dispatch('hideLoadingModals')
@@ -365,7 +365,7 @@
     cursor: pointer;
     background:url('../../../assets/delete.png') center center;
     background-repeat:no-repeat;
-    
+
   }
   .common-download-icon {
     width:24px;

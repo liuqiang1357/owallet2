@@ -1,5 +1,5 @@
 import { Wallet, Identity, Crypto, OntidContract, TransactionBuilder } from "ontology-ts-sdk";
-import {GAS_PRICE, GAS_LIMIT} from '../../../core/consts'
+import {GAS_PRICE, GAS_LIMIT} from '../../core/consts'
 const state = {
   currentStep: 0,
   label: '',

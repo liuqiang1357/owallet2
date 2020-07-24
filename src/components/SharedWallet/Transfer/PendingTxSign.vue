@@ -70,7 +70,7 @@
             </div>
         <div class="input-btns">
             <a-button type="danger" class="btn-cancel" @click="back">{{$t('sharedWalletHome.back')}}</a-button>
-            <a-button type="primary" class="btn-next" @click="submit" 
+            <a-button type="primary" class="btn-next" @click="submit"
             :disabled="sending || !checked
                 || currentSigner.type === 'CommonWallet' && !password
                 || currentSigner.type === 'HardwareWallet' && !ledgerPk">
@@ -85,11 +85,11 @@
 <script>
 import {mapState} from 'vuex'
 import {OntAssetTxBuilder, Crypto, TransactionBuilder, Transaction, RestClient, utils, TxSignature} from 'ontology-ts-sdk'
-import {ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, DEFAULT_SCRYPT, TEST_NET, MAIN_NET} from '../../../../core/consts'
+import {ONT_PASS_NODE, ONT_PASS_NODE_PRD, ONT_PASS_URL, DEFAULT_SCRYPT, TEST_NET, MAIN_NET} from '../../../core/consts'
 import axios from 'axios'
-import dbService from '../../../../core/dbService'
-import {legacySignWithLedger} from '../../../../core/ontLedger'
-import { getRestClient } from '../../../../core/utils';
+import dbService from '../../../core/dbService'
+import {legacySignWithLedger} from '../../../core/ontLedger'
+import { getRestClient } from '../../../core/utils';
 
 export default {
     name:'PendingTxSign',
@@ -109,7 +109,7 @@ export default {
             pendingTx: state => state.CurrentWallet.pendingTx,
             currentSigner: state => state.CurrentWallet.currentSigner,
             ledgerStatus: state => state.LedgerConnector.ledgerStatus,
-            ledgerPk : state => state.LedgerConnector.publicKey, 
+            ledgerPk : state => state.LedgerConnector.publicKey,
         })
     },
     mounted() {
@@ -185,7 +185,7 @@ export default {
                         this.sending = false;
                         return;
                     }
-              
+
                 // await this.httpService({
                 //     method: 'post',
                 //     data: body,
@@ -215,7 +215,7 @@ export default {
                             alert(res.Result)
                             return;
                         }
-                    
+
 
                 }
                 this.$store.dispatch('hideLoadingModals')

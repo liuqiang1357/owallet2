@@ -75,7 +75,7 @@
                 <a-steps progressDot :current="current">
                     <a-step ></a-step>
                     <a-step ></a-step>
-                    <a-step ></a-step>                    
+                    <a-step ></a-step>
                 </a-steps>
                 <div class="step-item-container">
                     <div>
@@ -119,7 +119,7 @@
                     <a-button class="add-initPos-btn" @click="handleAddInitPos">{{$t('nodeMgmt.addInitPos')}}</a-button>
                     <a-button class="add-initPos-btn" @click="handleReduceInitPos"
                     v-if="current_peer.initPos> detail.commitmentquantity"
-                    >{{$t('nodeMgmt.reduceInitPos')}}</a-button>    
+                    >{{$t('nodeMgmt.reduceInitPos')}}</a-button>
                     <a-button class="add-initPos-btn" @click="()=>{this.redeemPosVisible = true;}">{{$t('nodeMgmt.redeemInitPos')}}</a-button>
             </div>
         </div>
@@ -138,7 +138,7 @@
             </div>
         </div>
 
-        <a-modal 
+        <a-modal
             :title="$t('nodeMgmt.addInitPos')"
             :visible="addPosVisible"
             @ok="handleAddPosOk"
@@ -152,7 +152,7 @@
             </div>
         </a-modal>
 
-        <a-modal 
+        <a-modal
             :title="$t('nodeMgmt.reduceInitPos')"
             :visible="reducePosVisible"
             @ok="handleReducePosOk"
@@ -178,7 +178,7 @@
             </div>
         </a-modal>
 
-        <a-modal 
+        <a-modal
         :title="$t('nodeStake.signWithWallet')"
         :visible="walletPassModal"
         @ok="handleWalletSignOK"
@@ -200,8 +200,8 @@
 import Breadcrumb from "../../Breadcrumb";
 import { mapState } from "vuex";
 import { Crypto, TransactionBuilder, utils, TxSignature, GovernanceTxBuilder, RestClient } from "ontology-ts-sdk";
-import {legacySignWithLedger} from '../../../../core/ontLedger'
-import {varifyPositiveInt, getNodeUrl} from '../../../../core/utils.js'
+import {legacySignWithLedger} from '../../../core/ontLedger'
+import {varifyPositiveInt, getNodeUrl} from '../../../core/utils.js'
 import axios from "axios";
 import {
   ONT_PASS_NODE,
@@ -210,7 +210,7 @@ import {
   GAS_PRICE,
   GAS_LIMIT,
   DEFAULT_SCRYPT
-} from "../../../../core/consts";
+} from "../../../core/consts";
 
 export default {
   name: "NodeStakeInfo",
@@ -252,14 +252,14 @@ export default {
     this.$store.dispatch("fetchStakeDetail", data);
     this.$store.dispatch('fetchPeerItem', this.nodePublicKey);
     this.$store.dispatch('fetchPosLimit')
-    this.$store.dispatch('fetchAuthorizationInfo', 
+    this.$store.dispatch('fetchAuthorizationInfo',
       {pk: this.nodePublicKey, address: this.stakeWallet.address}
       )
     const intervalId = setInterval(() => {
       this.$store.dispatch("fetchStakeDetail", data);
       this.$store.dispatch('fetchPeerItem', this.nodePublicKey);
       this.$store.dispatch('fetchPosLimit')
-      this.$store.dispatch('fetchAuthorizationInfo', 
+      this.$store.dispatch('fetchAuthorizationInfo',
       {pk: this.nodePublicKey, address: this.stakeWallet.address}
       )
     }, this.interval);
@@ -385,9 +385,9 @@ export default {
         this.walletPassword = ''
         this.tx = ''
         this.$store.dispatch("hideLoadingModals");
-        this.$store.dispatch("fetchStakeDetail", 
-        { 
-          address: this.stakeWallet.address, 
+        this.$store.dispatch("fetchStakeDetail",
+        {
+          address: this.stakeWallet.address,
           public_key: this.nodePublicKey
         });
       }).catch(err=>{
@@ -458,9 +458,9 @@ export default {
         const userAddr = new Crypto.Address(this.stakeWallet.address);
         const peerPubkeys = [this.nodePublicKey]
         // const withdrawList = [this.detail.stakequantity]
-        // Fix:节点质押部分可能会增加或减少，退款应该用initPos； 
+        // Fix:节点质押部分可能会增加或减少，退款应该用initPos；
         // Fix2: 退款都可以用可提取部分
-        const withdrawList = [this.authorizationInfo.claimableVal]        
+        const withdrawList = [this.authorizationInfo.claimableVal]
         const payer = userAddr
         const tx = GovernanceTxBuilder.makeWithdrawTx(userAddr, peerPubkeys, withdrawList, payer, GAS_PRICE, GAS_LIMIT)
         this.tx = tx;
@@ -474,7 +474,7 @@ export default {
         }
         const userAddr = new Crypto.Address(this.stakeWallet.address);
         const peerPubkey = this.nodePublicKey;
-        const payer = userAddr;   
+        const payer = userAddr;
         const tx = GovernanceTxBuilder.makeQuitNodeTx(userAddr, peerPubkey, payer, GAS_PRICE, GAS_LIMIT)
         this.tx = tx;
         this.walletPassModal = true;
@@ -508,7 +508,7 @@ export default {
       }
       if(this.current_peer.totalPos && (this.current_peer.initPos - this.reducePos)* this.posLimit < this.current_peer.totalPos ) {
         this.validaReducePos = false;
-        this.$message.error(this.$t('nodeMgmt.notLessTotalPos'))        
+        this.$message.error(this.$t('nodeMgmt.notLessTotalPos'))
         return;
       }
       this.validReducePos = true;
@@ -519,7 +519,7 @@ export default {
         return;
       }
       this.addPosVisible = false;
-      const userAddr = new Crypto.Address(this.stakeWallet.address);      
+      const userAddr = new Crypto.Address(this.stakeWallet.address);
       const tx = GovernanceTxBuilder.makeAddInitPosTx(
         this.nodePublicKey,
         userAddr,
@@ -541,7 +541,7 @@ export default {
         return;
       }
       this.reducePosVisible = false;
-      const userAddr = new Crypto.Address(this.stakeWallet.address);      
+      const userAddr = new Crypto.Address(this.stakeWallet.address);
       const tx = GovernanceTxBuilder.makeReduceInitPosTx(
         this.nodePublicKey,
         userAddr,
@@ -565,7 +565,7 @@ export default {
       this.redeemPosVisible = false;
       const userAddr = new Crypto.Address(this.stakeWallet.address);
       const peerPubkeys = [this.nodePublicKey]
-      const withdrawList = [this.authorizationInfo.claimableVal]        
+      const withdrawList = [this.authorizationInfo.claimableVal]
       const payer = userAddr
       const tx = GovernanceTxBuilder.makeWithdrawTx(userAddr, peerPubkeys, withdrawList, payer, GAS_PRICE, GAS_LIMIT)
       this.tx = tx;

@@ -1,6 +1,6 @@
 import { Crypto } from 'ontology-ts-sdk'
-import { WALLET_TYPE} from '../../../core/consts'
-import dbService from '../../../core/dbService'
+import { WALLET_TYPE} from '../../core/consts'
+import dbService from '../../core/dbService'
 const state = {
     publicKey: '',
     address: '',

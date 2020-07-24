@@ -12,7 +12,7 @@
     margin-bottom:15px;
 }
 .choose-local-wallet label {
-    font-weight: bold;  
+    font-weight: bold;
 }
 .input-select {
     width:100%;
@@ -138,7 +138,7 @@
             <div class="label wallet-address">
                 {{sharedWallet.sharedWalletAddress}}
             </div>
-            
+
             <div class="wallet-num">
                 <div class="wallet-num-item">
                     <span class="font-medium">{{$t('importSharedWallet.totalCopayerNumber')}}</span>
@@ -166,12 +166,12 @@
             </div>
         </div>
 
-        
+
         <div class="footer-btns">
             <div class="footer-btn-container">
                 <a-button class="btn-cancel" type="default" @click="back">{{$t('importSharedWallet.back')}}</a-button>
-                <a-button class="btn-next" type="primary" @click="next" :disabled="!sharedWallet">{{$t('importSharedWallet.join')}}</a-button>   
-            </div>  
+                <a-button class="btn-next" type="primary" @click="next" :disabled="!sharedWallet">{{$t('importSharedWallet.join')}}</a-button>
+            </div>
         </div>
     </div>
 </template>
@@ -179,10 +179,10 @@
 <script>
 import {mapState} from 'vuex'
 import {Crypto} from 'ontology-ts-sdk'
-import {DEFAULT_SCRYPT} from '../../../../core/consts'
-import dbService from '../../../../core/dbService'
-import en from '../../../../common/lang/en'
-import zh from '../../../../common/lang/zh'
+import {DEFAULT_SCRYPT} from '../../../core/consts'
+import dbService from '../../../core/dbService'
+import en from '../../../lang/en'
+import zh from '../../../lang/zh'
 export default {
     name: 'InputPass',
     data() {
@@ -201,7 +201,7 @@ export default {
         back() {
             this.$store.commit('SUB_IMPORT_SHARED_STEP')
         },
-        
+
         next() {
             //save to db
             const that = this
@@ -221,8 +221,8 @@ export default {
                 that.$store.commit('CLEAR_IMPORT_SHARED_STATE')
                 that.$router.push({name:'Wallets'})
             })
-            
-            
+
+
         }
     }
 }

@@ -35,7 +35,7 @@
                 <p class="font-regular">{{$t('commonWalletHome.stepFollow')}}</p>
                 <p class="font-medium">{{$t('commonWalletHome.step1')}}</p>
                 <p class="font-medium">{{$t('commonWalletHome.step2')}}</p>
-                <p class="font-medium">{{$t('commonWalletHome.step3')}}</p>                
+                <p class="font-medium">{{$t('commonWalletHome.step3')}}</p>
             </div>
             <div class="right-half">
                 <p class="font-medium-black">{{$t('commonWalletHome.swapAmount')}}</p>
@@ -59,8 +59,8 @@
 <script>
 import Breadcrumb from '../Breadcrumb'
 import {mapState} from 'vuex'
-import {varifyPositiveInt} from '../../../core/utils.js'
-import {SWAP_ADDRESS, DEFAULT_SCRYPT} from '../../../core/consts'
+import {varifyPositiveInt} from '../../core/utils.js'
+import {SWAP_ADDRESS, DEFAULT_SCRYPT} from '../../core/consts'
 import {Crypto, SDK} from 'ontology-ts-sdk'
 
 export default {
@@ -127,7 +127,7 @@ export default {
             if(!this.amount || !this.validAmount) {
                 this.$message.error(this.$t('commonWalletHome.validAmount'))
                 return;
-            } 
+            }
             if(!this.password) {
                 this.$message.error(this.$t('commonWalletHome.emptyPass'))
                 return;
@@ -162,7 +162,7 @@ export default {
                     return;
                 }
             }
-            
+
         }
     }
 }

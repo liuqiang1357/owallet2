@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import {varifyPositiveInt, varifyOngValue, validateAddress} from '../../../../core/utils.js'
+import {varifyPositiveInt, varifyOngValue, validateAddress} from '../../../core/utils.js'
 import {mapState} from 'vuex'
 import { BigNumber } from 'bignumber.js';
 
@@ -146,8 +146,8 @@ export default {
             else if(!varifyOngValue(this.amount)) {
                 this.validAmount = false;
                 return;
-            } 
-            if(this.asset === 'ONT' && Number(this.amount) > Number(this.balance.ont) 
+            }
+            if(this.asset === 'ONT' && Number(this.amount) > Number(this.balance.ont)
              || this.asset === 'ONG' && Number(this.amount) > Number(this.balance.ong)
              || this.asset !== 'ONT' && this.asset !== 'ONG' && Number(this.amount) > Number(this.selectedOep4.balance)) {
                  this.validAmount = false;
@@ -159,7 +159,7 @@ export default {
                 this.$message.error(this.$t('transfer.exceedBalance'))
                 this.validAmount = false;
                 return;
-            }         
+            }
             this.validAmount = true;
         },
         changeAsset(value) {
@@ -177,7 +177,7 @@ export default {
             } else {
                 this.asset = value;
             }
-            
+
             console.log(value)
         },
         maxAmount() {

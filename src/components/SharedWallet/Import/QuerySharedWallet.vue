@@ -51,24 +51,24 @@
             v-model="searchText"
             :placeholder="$t('importSharedWallet.inputAddress')"  />
         </div>
-        
+
         <div class="footer-btns">
             <div class="footer-btn-container">
                 <a-button class="btn-cancel" type="default" @click="cancel">{{$t('importSharedWallet.cancel')}}</a-button>
-                <a-button class="btn-next" type="primary" @click="next" :disabled="!searchText">{{$t('importSharedWallet.search')}}</a-button>            
+                <a-button class="btn-next" type="primary" @click="next" :disabled="!searchText">{{$t('importSharedWallet.search')}}</a-button>
             </div>
-            
+
         </div>
-        
+
     </div>
 </template>
 
 <script>
 import axios from 'axios';
-import {ONT_PASS_NODE, ONT_PASS_NODE_PRD,ONT_PASS_URL} from '../../../../core/consts'
-import dbService from '../../../../core/dbService'
-import en from '../../../../common/lang/en'
-import zh from '../../../../common/lang/zh'
+import {ONT_PASS_NODE, ONT_PASS_NODE_PRD,ONT_PASS_URL} from '../../../core/consts'
+import dbService from '../../../core/dbService'
+import en from '../../../lang/en'
+import zh from '../../../lang/zh'
 
 export default {
     name: 'QuerySharedWallet',
@@ -107,14 +107,14 @@ export default {
                     this.$store.commit('UPDATE_SHARED_WALLET', {sharedWallet: res.data})
                     this.$store.commit('ADD_IMPORT_SHARED_STEP');
                 } else {
-                    this.$store.commit('UPDATE_SHARED_WALLET', {sharedWallet: null} )  
-                    this.$message.error(this.$t('importSharedWallet.notFound'))                 
-                } 
+                    this.$store.commit('UPDATE_SHARED_WALLET', {sharedWallet: null} )
+                    this.$message.error(this.$t('importSharedWallet.notFound'))
+                }
                 // this.$store.commit('ADD_IMPORT_SHARED_STEP');
             }).catch(err => {
                 this.$store.dispatch('hideLoadingModals')
-                this.$store.commit('UPDATE_SHARED_WALLET', {sharedWallet: null} )   
-                this.$message.error(this.$t('commonWalletHome.networkError'))                
+                this.$store.commit('UPDATE_SHARED_WALLET', {sharedWallet: null} )
+                this.$message.error(this.$t('commonWalletHome.networkError'))
                 // this.$store.commit('ADD_IMPORT_SHARED_STEP');
             })
         },

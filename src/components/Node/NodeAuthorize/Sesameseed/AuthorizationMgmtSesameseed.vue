@@ -128,7 +128,7 @@
         </div>
       </div>
       <!-- <div class="right-half">
-            
+
       </div>-->
     </div>
     <a-modal
@@ -175,10 +175,10 @@
 import Breadcrumb from "../../../Breadcrumb";
 import { mapState } from "vuex";
 import SignSendTx from "../../../Common/SignSendTx";
-import { GAS_PRICE, GAS_LIMIT } from "../../../../../core/consts";
+import { GAS_PRICE, GAS_LIMIT } from "../../../../core/consts";
 import { Crypto, TransactionBuilder, utils } from "ontology-ts-sdk";
 import numeral from "numeral";
-import { varifyPositiveInt } from "../../../../../core/utils.js";
+import { varifyPositiveInt } from "../../../../core/utils.js";
 import { CONTRACT_HASH } from "./SesameseedVars";
 
 export default {

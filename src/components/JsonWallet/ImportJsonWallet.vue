@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import en from '../../../common/lang/en'
-  import zh from '../../../common/lang/zh'
+  import en from '../../lang/en'
+  import zh from '../../lang/zh'
   import BasicInfo from './Import/BasicInfo'
   import Breadcrumb from '../Breadcrumb'
   import {mapState} from 'vuex';

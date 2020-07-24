@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import en from '../../../common/lang/en'
-  import zh from '../../../common/lang/zh'
+  import en from '../../lang/en'
+  import zh from '../../lang/zh'
   import BasicInfo from './Create/BasicInfo'
   import ConfirmInfo from './Create/ConfirmInfo'
   import Breadcrumb from '../Breadcrumb'
